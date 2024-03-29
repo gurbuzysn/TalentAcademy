@@ -1,0 +1,6 @@
+@TalentAcademy.WebAPI_HostAddress = http://localhost:5020
+
+GET {{TalentAcademy.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
