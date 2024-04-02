@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <Folder Include="Abstraction\" />
+    <Folder Include="MapperProfile\" />
+    <Folder Include="Dtos\" />
   </ItemGroup>
 
 </Project>
