@@ -15,5 +15,10 @@ namespace TalentAcademy.Domain.Entities.Identitiy
         public string FullName => $"{FirstName} {LastName}";
         public Gender Gender { get; set; }
         public DateTime BirthOfDate { get; set; }
+        public string? Image { get; set; }
+
+        public string? RefreshToken { get; set; }
+        public DateTime? RefreshTokenEndDate { get; set; }
+
     }
 }
