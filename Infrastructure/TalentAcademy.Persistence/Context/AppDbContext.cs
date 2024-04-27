@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TalentAcademy.Domain.Entities;
+using TalentAcademy.Domain.Entities.Identitiy;
 
 namespace TalentAcademy.Persistence.Context
 {
@@ -13,5 +15,16 @@ namespace TalentAcademy.Persistence.Context
         {
             
         }
+
+
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<Trainer> Trainers { get; set; }
+        public DbSet<Student> Students { get; set; }
+
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Topic> Topics { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
+
+
     }
 }

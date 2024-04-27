@@ -19,4 +19,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\TalentAcademy.Domain\TalentAcademy.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
