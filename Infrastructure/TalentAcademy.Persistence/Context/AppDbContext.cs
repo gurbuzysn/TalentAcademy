@@ -16,15 +16,10 @@ namespace TalentAcademy.Persistence.Context
             
         }
 
-
         public DbSet<Admin> Admins { get; set; }
-        public DbSet<Trainer> Trainers { get; set; }
         public DbSet<Student> Students { get; set; }
-
         public DbSet<Course> Courses { get; set; }
         public DbSet<Topic> Topics { get; set; }
         public DbSet<Lesson> Lessons { get; set; }
-
-
     }
 }
