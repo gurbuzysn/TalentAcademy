@@ -8,6 +8,6 @@ namespace TalentAcademy.Domain.Entities.Identitiy
 {
     public class Student : AppUser
     {
-        public List<Course> MyProperty { get; set; }
+        public List<Course> MyProperty { get; set; } = new();
     }
 }

@@ -12,5 +12,8 @@ namespace TalentAcademy.Domain.Entities
         public string Name { get; set; } = null!;
         public TimeSpan Duration { get; set; }
         public string VideoUri { get; set; } = null!;
+
+        public Guid TopicId { get; set; }
+        public Topic Topic { get; set; } = null!;
     }
 }
