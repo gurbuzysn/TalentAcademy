@@ -7,9 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Abstraction\" />
+    <Folder Include="Abstractions\" />
     <Folder Include="MapperProfile\" />
     <Folder Include="Dtos\" />
+    <Folder Include="Repositories\" />
   </ItemGroup>
 
 </Project>
