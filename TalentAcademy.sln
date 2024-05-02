@@ -9,15 +9,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{C2D9EF59-B5C8-4C55-BAE7-7A16836AC829}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TalentAcademy.Domain", "Core\TalentAcademy.Domain\TalentAcademy.Domain.csproj", "{35130383-655E-4814-BED3-5B1EF271B472}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TalentAcademy.Domain", "Core\TalentAcademy.Domain\TalentAcademy.Domain.csproj", "{35130383-655E-4814-BED3-5B1EF271B472}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TalentAcademy.Application", "Core\TalentAcademy.Application\TalentAcademy.Application.csproj", "{D5106F25-3D9E-4ED7-B4AC-856A1832DF46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TalentAcademy.Application", "Core\TalentAcademy.Application\TalentAcademy.Application.csproj", "{D5106F25-3D9E-4ED7-B4AC-856A1832DF46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TalentAcademy.Persistence", "Infrastructure\TalentAcademy.Persistence\TalentAcademy.Persistence.csproj", "{A6892413-93D1-48F0-B55F-288DC7614502}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TalentAcademy.Persistence", "Infrastructure\TalentAcademy.Persistence\TalentAcademy.Persistence.csproj", "{A6892413-93D1-48F0-B55F-288DC7614502}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TalentAcademy.Infrastructure", "Infrastructure\TalentAcademy.Infrastructure\TalentAcademy.Infrastructure.csproj", "{055F0BB3-1BF1-4365-927A-B53DC27413C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TalentAcademy.Infrastructure", "Infrastructure\TalentAcademy.Infrastructure\TalentAcademy.Infrastructure.csproj", "{055F0BB3-1BF1-4365-927A-B53DC27413C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TalentAcademy.WebAPI", "Presentation\TalentAcademy.WebAPI\TalentAcademy.WebAPI.csproj", "{B142BDFB-4105-4F2A-B674-55BCB9504F01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TalentAcademy.WebAPI", "Presentation\TalentAcademy.WebAPI\TalentAcademy.WebAPI.csproj", "{B142BDFB-4105-4F2A-B674-55BCB9504F01}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ConsumeApi", "ConsumeApi", "{1CFEC1EC-BB2F-41BD-9F32-11E180C9FF96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TalentAcademy.ConsumeApi", "ConsumeApi\TalentAcademy.ConsumeApi\TalentAcademy.ConsumeApi.csproj", "{5B3429FA-66D2-4BD5-A3F6-D1D560155E51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,10 @@ Global
 		{B142BDFB-4105-4F2A-B674-55BCB9504F01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B142BDFB-4105-4F2A-B674-55BCB9504F01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B142BDFB-4105-4F2A-B674-55BCB9504F01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B3429FA-66D2-4BD5-A3F6-D1D560155E51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B3429FA-66D2-4BD5-A3F6-D1D560155E51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B3429FA-66D2-4BD5-A3F6-D1D560155E51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B3429FA-66D2-4BD5-A3F6-D1D560155E51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +63,7 @@ Global
 		{A6892413-93D1-48F0-B55F-288DC7614502} = {52691659-27A6-44C3-A042-3735C3F4E1F9}
 		{055F0BB3-1BF1-4365-927A-B53DC27413C6} = {52691659-27A6-44C3-A042-3735C3F4E1F9}
 		{B142BDFB-4105-4F2A-B674-55BCB9504F01} = {C2D9EF59-B5C8-4C55-BAE7-7A16836AC829}
+		{5B3429FA-66D2-4BD5-A3F6-D1D560155E51} = {1CFEC1EC-BB2F-41BD-9F32-11E180C9FF96}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D056D1B-1A08-4B08-BBC1-A3D84C347FBB}
