@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TalentAcademy.Application.Features.Queries.Student.GetAllStudent
 {
-    internal class GetAllStudentsQueryHandler : IRequestHandler<GetAllStudentsQueryRequest, GetAllStudentsQueryResponse>
+    public class GetAllStudentsQueryHandler : IRequestHandler<GetAllStudentsQueryRequest, GetAllStudentsQueryResponse>
     {
         public Task<GetAllStudentsQueryResponse> Handle(GetAllStudentsQueryRequest request, CancellationToken cancellationToken)
         {
