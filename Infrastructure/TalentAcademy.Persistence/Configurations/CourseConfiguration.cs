@@ -14,9 +14,8 @@ namespace TalentAcademy.Persistence.Configurations
         public void Configure(EntityTypeBuilder<Course> builder)
         {
             builder.Property(x => x.Name).IsRequired();
-
             builder.HasMany(c => c.Topics).WithOne(t => t.Course).HasForeignKey(t => t.CourseId);
-
+            builder.HasMany(c => c.StudentCourses).WithOne(sc => sc.Course).HasForeignKey(sc => sc.CourseId);
         }
     }
 }
