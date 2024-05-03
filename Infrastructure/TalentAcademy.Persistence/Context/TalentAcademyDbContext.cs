@@ -10,9 +10,9 @@ using TalentAcademy.Domain.Entities.Identitiy;
 
 namespace TalentAcademy.Persistence.Context
 {
-    public class AppDbContext : DbContext
+    public class TalentAcademyDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        public TalentAcademyDbContext(DbContextOptions<TalentAcademyDbContext> options) : base(options)
         {
             
         }
@@ -22,6 +22,8 @@ namespace TalentAcademy.Persistence.Context
         public DbSet<Course> Courses { get; set; }
         public DbSet<Topic> Topics { get; set; }
         public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<StudentCourse> StudentCourses { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -23,8 +23,4 @@
     <ProjectReference Include="..\..\Core\TalentAcademy.Domain\TalentAcademy.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Configurations\" />
-  </ItemGroup>
-
 </Project>
