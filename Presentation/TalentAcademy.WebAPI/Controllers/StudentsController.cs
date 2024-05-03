@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TalentAcademy.Application.Features.Queries.Student.GetAllStudent;
+using TalentAcademy.Application.Features.Queries.Student.GetByIdStudent;
 
 namespace TalentAcademy.WebAPI.Controllers
 {
@@ -15,12 +15,23 @@ namespace TalentAcademy.WebAPI.Controllers
         {
             _mediator = mediator;
         }
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
-        {
-            var allStudents = await _mediator.Send(new GetAllStudentsQueryRequest());
 
+        [HttpGet]
+        public async Task<IActionResult> GetAll(GetAllStudentsQueryRequest request)
+        {
+            var allStudents = await _mediator.Send(request);
             return Ok(allStudents);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(GetStudentByIdQueryRequest request)
+        {
+            var selectedStudent = await _mediator.Send(request);
+            return Ok(selectedStudent);
+        }
+
+
+
+
     }
 }

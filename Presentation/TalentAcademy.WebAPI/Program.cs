@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TalentAcademy.Application;
-using TalentAcademy.Application.Features.Queries.Student.GetByIdStudent;
 using TalentAcademy.Application.Features.Queries.Students.GetAllStudent;
+using TalentAcademy.Application.Features.Queries.Students.GetByIdStudent;
 using TalentAcademy.Application.Repositories;
 using TalentAcademy.Persistence.Context;
 using TalentAcademy.Persistence.Repositories;

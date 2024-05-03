@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using TalentAcademy.Application.Features.Queries.Student.GetByIdStudent;
+using TalentAcademy.Application.Features.Queries.Students.GetByIdStudent;
+using TalentAcademy.Domain.Entities.Identitiy;
 
 namespace TalentAcademy.Application.MappingProfile
 {
-    internal class StudentProfile
+    public class StudentProfile : Profile
     {
+        public StudentProfile()
+        {
+            CreateMap<Student, CreateStudentCommandResponse>();
+        }
     }
 }

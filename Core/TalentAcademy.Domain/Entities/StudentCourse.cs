@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TalentAcademy.Domain.Entities.Identitiy;
+﻿using TalentAcademy.Domain.Entities.Identitiy;
 
 namespace TalentAcademy.Domain.Entities
 {
