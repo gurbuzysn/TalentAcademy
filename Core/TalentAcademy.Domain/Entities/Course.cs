@@ -14,8 +14,8 @@ namespace TalentAcademy.Domain.Entities
         public string Description { get; set; } = null!;
 
         //Navigation Prop.
-        public List<Topic> Topics { get; set; } = new(); // 1 - Çok İlişki
-        public List<Student> Students { get; set; } = new(); // Çok - Çok İlişki
+        public List<Topic> Topics { get; set; } = new();
+        public List<Student> Students { get; set; } = new();
 
     }
 }
