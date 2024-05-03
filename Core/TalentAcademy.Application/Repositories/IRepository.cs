@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TalentAcademy.Application.Abstractions
+namespace TalentAcademy.Application.Repositories
 {
     public interface IRepository<T> where T : class, new()
     {
