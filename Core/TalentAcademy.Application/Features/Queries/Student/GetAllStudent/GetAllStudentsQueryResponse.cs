@@ -2,7 +2,7 @@
 
 namespace TalentAcademy.Application.Features.Queries.Student.GetAllStudent
 {
-    public class GetAllStudentQueryResponse
+    public class GetAllStudentsQueryResponse
     {
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;

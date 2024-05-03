@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TalentAcademy.Application.Features.Queries.Student.GetAllStudent
 {
-    public class GetAllStudentQueryRequest : IRequest<GetAllStudentQueryResponse>
+    public class GetAllStudentsQueryRequest : IRequest<GetAllStudentsQueryResponse>
     {
     }
 }

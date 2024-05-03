@@ -9,13 +9,13 @@
   <ItemGroup>
     <Folder Include="Dtos\" />
     <Folder Include="Features\Commands\Student\" />
-    <Folder Include="Features\Queries\Student\GetByIdStudent\" />
     <Folder Include="MapperProfile\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
   </ItemGroup>
 
   <ItemGroup>
