@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\TalentAcademy.Application\TalentAcademy.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\TalentAcademy.Persistence\TalentAcademy.Persistence.csproj" />
   </ItemGroup>
 

@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\TalentAcademy.Application\TalentAcademy.Application.csproj" />
     <ProjectReference Include="..\..\Core\TalentAcademy.Domain\TalentAcademy.Domain.csproj" />
   </ItemGroup>
 
