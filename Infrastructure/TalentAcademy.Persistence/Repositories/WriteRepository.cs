@@ -5,26 +5,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TalentAcademy.Application.Abstractions;
+using TalentAcademy.Persistence.Context;
 
 namespace TalentAcademy.Persistence.Repositories
 {
     public class WriteRepository<T> : IWriteRepository<T> where T : class, new()
     {
-        public DbSet<T> Table => throw new NotImplementedException();
+        private readonly TalentAcademyDbContext _context;
 
-        public Task<T> CreateAsync(T entity)
+        public WriteRepository(TalentAcademyDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+        public DbSet<T> Table => _context.Set<T>();
+
+        public async Task<T> CreateAsync(T entity)
+        {
+            await Table.AddAsync(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
-        public Task DeleteAsync(T entity)
+        public async Task RemoveAsync(T entity)
         {
-            throw new NotImplementedException();
+            Table.Remove(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public Task UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            Table.Update(entity);
+            await _context.SaveChangesAsync();
         }
     }
 }

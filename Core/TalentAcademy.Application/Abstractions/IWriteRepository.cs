@@ -10,6 +10,6 @@ namespace TalentAcademy.Application.Abstractions
     {
         Task<T> CreateAsync(T entity);
         Task UpdateAsync(T entity);
-        Task DeleteAsync(T entity);
+        Task RemoveAsync(T entity);
     }
 }

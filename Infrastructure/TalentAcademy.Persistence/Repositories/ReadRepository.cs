@@ -22,17 +22,17 @@ namespace TalentAcademy.Persistence.Repositories
 
         public async Task<List<T>> GetAllAsync()
         {
-            return await _context.Set<T>().AsNoTracking().ToListAsync();
+            return await Table.AsNoTracking().ToListAsync();
         }
 
         public async Task<T?> GetByFilterAsync(Expression<Func<T, bool>> filter)
         {
-            return await _context.Set<T>().AsNoTracking().SingleOrDefaultAsync(filter);
+            return await Table.AsNoTracking().SingleOrDefaultAsync(filter);
         }
 
         public async Task<T?> GetByIdAsync(Guid id)
         {
-            return await _context.Set<T>().FindAsync(id);
+            return await Table.FindAsync(id);
         }
     }
 }
