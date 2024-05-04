@@ -9,7 +9,7 @@ namespace TalentAcademy.Persistence
 {
     public static class ServiceRegistration
     {
-        public static void AddPersistenceServices(IServiceCollection services, IConfiguration configuration)
+        public static void AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<TalentAcademyDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
