@@ -4,7 +4,7 @@ using TalentAcademy.Application.Features.Commands.Students.CreateStudent;
 using TalentAcademy.Application.Features.Commands.Students.RemoveStudent;
 using TalentAcademy.Application.Features.Commands.Students.UpdateStudent;
 using TalentAcademy.Application.Features.Queries.Student.GetAllStudent;
-using TalentAcademy.Application.Features.Queries.Student.GetByIdStudent;
+using TalentAcademy.Application.Features.Queries.Student.GetStudentById;
 
 namespace TalentAcademy.WebAPI.Controllers
 {
@@ -22,7 +22,7 @@ namespace TalentAcademy.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            if(!ModelState.IsValid) 
+            if (!ModelState.IsValid)
                 return BadRequest();
 
             var allStudents = await _mediator.Send(new GetAllStudentsQueryRequest());
@@ -62,7 +62,7 @@ namespace TalentAcademy.WebAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Remove(Guid id)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest();
 
             await _mediator.Send(new RemoveStudentCommandRequest(id));
