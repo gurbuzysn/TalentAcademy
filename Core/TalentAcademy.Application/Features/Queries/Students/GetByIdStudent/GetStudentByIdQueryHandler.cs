@@ -2,7 +2,6 @@
 using MediatR;
 using TalentAcademy.Application.Features.Queries.Student.GetByIdStudent;
 using TalentAcademy.Application.Repositories;
-using TalentAcademy.Domain.Entities.Identitiy;
 
 namespace TalentAcademy.Application.Features.Queries.Students.GetByIdStudent
 {

@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
-using TalentAcademy.Application.Features.Queries.Student.GetByIdStudent;
-using TalentAcademy.Application.Features.Queries.Students.GetByIdStudent;
+using TalentAcademy.Application.Features.Commands.Students.CreateStudent;
 using TalentAcademy.Domain.Entities.Identitiy;
 
 namespace TalentAcademy.Application.MappingProfile
@@ -10,6 +9,7 @@ namespace TalentAcademy.Application.MappingProfile
         public StudentProfile()
         {
             CreateMap<Student, CreateStudentCommandResponse>();
+            CreateMap<CreateStudentCommandRequest, Student>();
         }
     }
 }

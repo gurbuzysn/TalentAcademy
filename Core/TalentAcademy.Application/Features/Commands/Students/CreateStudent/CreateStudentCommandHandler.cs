@@ -1,11 +1,5 @@
 ﻿using AutoMapper;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TalentAcademy.Application.Features.Queries.Student.GetByIdStudent;
 using TalentAcademy.Application.Repositories;
 using TalentAcademy.Domain.Entities.Identitiy;
 
@@ -21,6 +15,12 @@ namespace TalentAcademy.Application.Features.Commands.Students.CreateStudent
             _writeRepository = writeRepository;
             _mapper = mapper;
         }
-    
+
+        public async Task<CreateStudentCommandResponse> Handle(CreateStudentCommandRequest request, CancellationToken cancellationToken)
+        {
+            var createStudent = _mapper.Map<Student>(request);
+            var result = await _writeRepository.CreateAsync(createStudent);
+            return _mapper.Map<CreateStudentCommandResponse>(result);
+        }
     }
 }
