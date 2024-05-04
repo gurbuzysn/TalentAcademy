@@ -20,7 +20,7 @@ namespace TalentAcademy.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> List()
         {
             if(!ModelState.IsValid) 
                 return BadRequest();
@@ -30,7 +30,7 @@ namespace TalentAcademy.WebAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(Guid id)
+        public async Task<IActionResult> GetById(Guid id)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
@@ -59,13 +59,13 @@ namespace TalentAcademy.WebAPI.Controllers
             return NoContent();
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> Remove(RemoveStudentCommandRequest request)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Remove(Guid id)
         {
             if(!ModelState.IsValid)
                 return BadRequest();
 
-            await _mediator.Send(request);
+            await _mediator.Send(new RemoveStudentCommandRequest(id));
             return NoContent();
         }
     }
