@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using MediatR;
-using TalentAcademy.Application.Features.Queries.Student.GetByIdStudent;
+using TalentAcademy.Application.Features.Queries.Student.GetStudentById;
 using TalentAcademy.Application.Repositories;
 
-namespace TalentAcademy.Application.Features.Queries.Students.GetByIdStudent
+namespace TalentAcademy.Application.Features.Queries.Students.GetStudentById
 {
     public class GetStudentByIdQueryHandler : IRequestHandler<GetStudentByIdQueryRequest, GetStudentByIdQueryResponse>
     {

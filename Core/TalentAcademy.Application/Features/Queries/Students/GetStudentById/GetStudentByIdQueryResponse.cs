@@ -1,6 +1,6 @@
 ﻿using TalentAcademy.Domain.Enums;
 
-namespace TalentAcademy.Application.Features.Queries.Student.GetByIdStudent
+namespace TalentAcademy.Application.Features.Queries.Student.GetStudentById
 {
     public class GetStudentByIdQueryResponse
     {

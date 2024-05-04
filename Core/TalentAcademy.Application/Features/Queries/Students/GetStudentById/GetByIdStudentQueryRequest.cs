@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace TalentAcademy.Application.Features.Queries.Student.GetByIdStudent
+namespace TalentAcademy.Application.Features.Queries.Student.GetStudentById
 {
     public class GetStudentByIdQueryRequest : IRequest<GetStudentByIdQueryResponse>
     {
