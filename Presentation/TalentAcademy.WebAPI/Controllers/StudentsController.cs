@@ -20,22 +20,22 @@ namespace TalentAcademy.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll(GetAllStudentsQueryRequest request)
+        public async Task<IActionResult> GetAll()
         {
             if(!ModelState.IsValid) 
                 return BadRequest();
 
-            var allStudents = await _mediator.Send(request);
+            var allStudents = await _mediator.Send(new GetAllStudentsQueryRequest());
             return Ok(allStudents);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(GetStudentByIdQueryRequest request)
+        public async Task<IActionResult> Get(Guid id)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var selectedStudent = await _mediator.Send(request);
+            var selectedStudent = await _mediator.Send(new GetStudentByIdQueryRequest(id));
             return Ok(selectedStudent);
         }
 
