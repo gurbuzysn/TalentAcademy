@@ -33,6 +33,8 @@ namespace TalentAcademy.Application.Features.Commands.Students.UpdateStudent
                 student.Gender = request.Gender;
                 student.BirthOfDate = request.BirthOfDate;
                 student.Image = request.Image;
+
+                await _writeRepository.UpdateAsync(student);
             }
         }
     }
