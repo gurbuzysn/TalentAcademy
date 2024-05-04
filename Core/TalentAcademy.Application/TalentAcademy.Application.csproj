@@ -10,7 +10,6 @@
     <Folder Include="Abstractions\" />
     <Folder Include="Dtos\" />
     <Folder Include="Features\Commands\Courses\" />
-    <Folder Include="Features\Queries\Courses\GetCourseById\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -22,11 +22,12 @@ namespace TalentAcademy.WebAPI.Controllers
             return Ok(allCourses);
         }
 
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> Get()
-        //{
-        //    return Ok();
-        //}
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(Guid id)
+        {
+            var course = await _mediator.Send(new GetCourseByIdRequest());
+            return Ok(course);
+        }
 
         //[HttpPost]
         //public async Task<IActionResult> Created(CreateCourseCommandRequest request)
