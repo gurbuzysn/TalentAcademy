@@ -5,7 +5,7 @@ using TalentAcademy.Domain.Entities.Identitiy;
 
 namespace TalentAcademy.Application.Features.Commands.Students.CreateStudent
 {
-    public class CreateStudentCommandHandler : IRequestHandler<CreateStudentCommandRequest, CreateStudentCommandResponse>
+    public class CreateStudentCommandHandler : IRequestHandler<CreateStudentCommandRequest>
     {
         private readonly IWriteRepository<Student> _writeRepository;
         private readonly IMapper _mapper;
@@ -16,11 +16,10 @@ namespace TalentAcademy.Application.Features.Commands.Students.CreateStudent
             _mapper = mapper;
         }
 
-        public async Task<CreateStudentCommandResponse> Handle(CreateStudentCommandRequest request, CancellationToken cancellationToken)
+        public async Task Handle(CreateStudentCommandRequest request, CancellationToken cancellationToken)
         {
             var createStudent = _mapper.Map<Student>(request);
             var result = await _writeRepository.CreateAsync(createStudent);
-            return _mapper.Map<CreateStudentCommandResponse>(result);
         }
     }
 }

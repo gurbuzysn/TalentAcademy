@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using TalentAcademy.Domain.Entities;
 using TalentAcademy.Domain.Entities.Identitiy;
 
 namespace TalentAcademy.Persistence.Context
 {
-    public class TalentAcademyDbContext : DbContext
+    public class TalentAcademyDbContext : IdentityDbContext
     {
         public TalentAcademyDbContext(DbContextOptions<TalentAcademyDbContext> options) : base(options)
         {
