@@ -45,7 +45,7 @@ namespace TalentAcademy.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var result = _mediator.Send(request);
+            var result = await _mediator.Send(request);
             return Created("", result);
         }
 

@@ -23,6 +23,7 @@ namespace TalentAcademy.Application.Features.Commands.Courses.CreateCourse
         public async Task<CreateCourseCommandResponse> Handle(CreateCourseCommandRequest request, CancellationToken cancellationToken)
         {
             var createdCourse = _mapper.Map<Course>(request);
+            createdCourse.CreatedDate = DateTime.UtcNow;
             await _writeRepository.CreateAsync(createdCourse);
             return _mapper.Map<CreateCourseCommandResponse>(createdCourse);
         }

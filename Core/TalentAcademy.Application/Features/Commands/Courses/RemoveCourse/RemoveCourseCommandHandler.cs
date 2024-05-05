@@ -27,6 +27,7 @@ namespace TalentAcademy.Application.Features.Commands.Courses.RemoveCourse
             var deletedCourse = await _readRepository.GetByIdAsync(request.Id);
             if (deletedCourse != null)
             {
+                deletedCourse.DeletedDate = DateTime.UtcNow;
                 await _writeRepository.RemoveAsync(deletedCourse);
             }
         }
