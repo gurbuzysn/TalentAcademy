@@ -1,6 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TalentAcademy.Application.Features.Commands.Courses.CreateCourse;
+using TalentAcademy.Application.Features.Commands.Courses.RemoveCourse;
+using TalentAcademy.Application.Features.Commands.Courses.UpdateCourse;
 using TalentAcademy.Application.Features.Queries.Courses.GetAllCourses;
+using TalentAcademy.Application.Features.Queries.Courses.GetCourseById;
 
 namespace TalentAcademy.WebAPI.Controllers
 {
@@ -18,6 +22,9 @@ namespace TalentAcademy.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> List()
         {
+            if(!ModelState.IsValid)
+                return BadRequest();
+
             var allCourses = await _mediator.Send(new GetAllCoursesQueryRequest());
             return Ok(allCourses);
         }
@@ -25,26 +32,41 @@ namespace TalentAcademy.WebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
-            var course = await _mediator.Send(new GetCourseByIdRequest());
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            var course = await _mediator.Send(new GetCourseByIdQueryRequest(id));
             return Ok(course);
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> Created(CreateCourseCommandRequest request)
-        //{
-        //    return Created("");
-        //}
+        [HttpPost]
+        public async Task<IActionResult> Created(CreateCourseCommandRequest request)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
 
-        //[HttpPut]
-        //public async Task<IActionResult> Update(UpdateCourseCommandRequest request)
-        //{
-        //    return Ok();
-        //}
+            var result = _mediator.Send(request);
+            return Created("", result);
+        }
 
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> Remove(Guid id)
-        //{
-        //    return Ok();
-        //}
+        [HttpPut]
+        public async Task<IActionResult> Update(UpdateCourseCommandRequest request)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            await _mediator.Send(request);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Remove(Guid id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            await _mediator.Send(new RemoveCourseCommandRequest(id)); 
+            return NoContent();
+        }
     }
 }
