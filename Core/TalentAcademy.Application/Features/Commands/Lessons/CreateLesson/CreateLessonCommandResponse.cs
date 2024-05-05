@@ -3,5 +3,7 @@
     public class CreateLessonCommandResponse
     {
         public string Name { get; set; } = null!;
+        public string VideoUri { get; set; } = null!;
+        public TimeSpan Duration { get; set; }
     }
 }

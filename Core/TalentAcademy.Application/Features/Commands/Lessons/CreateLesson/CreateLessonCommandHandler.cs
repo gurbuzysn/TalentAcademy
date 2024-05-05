@@ -18,6 +18,7 @@ namespace TalentAcademy.Application.Features.Commands.Lessons.CreateLesson
         public async Task<CreateLessonCommandResponse> Handle(CreateLessonCommandRequest request, CancellationToken cancellationToken)
         {
             var createdLesson = _mapper.Map<Lesson>(request);
+            createdLesson.Duration = new TimeSpan(00, 10, 00);
             await _writeRepository.CreateAsync(createdLesson);
 
             return _mapper.Map<CreateLessonCommandResponse>(createdLesson);
