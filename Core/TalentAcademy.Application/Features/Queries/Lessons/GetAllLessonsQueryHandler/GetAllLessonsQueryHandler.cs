@@ -1,10 +1,5 @@
 ﻿using AutoMapper;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TalentAcademy.Application.Repositories;
 using TalentAcademy.Domain.Entities;
 
@@ -15,7 +10,7 @@ namespace TalentAcademy.Application.Features.Queries.Lessons.GetAllLessonsQueryH
         private readonly IReadRepository<Lesson> _readRepository;
         private readonly IMapper _mapper;
 
-        public GetAllLessonsQueryHandler(IReadRepository<Lesson> readRepository , IMapper mapper)
+        public GetAllLessonsQueryHandler(IReadRepository<Lesson> readRepository, IMapper mapper)
         {
             _readRepository = readRepository;
             _mapper = mapper;

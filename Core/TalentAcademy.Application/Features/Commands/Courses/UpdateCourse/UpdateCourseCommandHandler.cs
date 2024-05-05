@@ -1,10 +1,5 @@
 ﻿using AutoMapper;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TalentAcademy.Application.Repositories;
 using TalentAcademy.Domain.Entities;
 
@@ -26,7 +21,7 @@ namespace TalentAcademy.Application.Features.Commands.Courses.UpdateCourse
         {
             var updatedCourse = await _readRepository.GetByIdAsync(request.Id);
 
-            if (updatedCourse != null) 
+            if (updatedCourse != null)
             {
                 updatedCourse.Name = request.Name;
                 updatedCourse.Description = request.Description;

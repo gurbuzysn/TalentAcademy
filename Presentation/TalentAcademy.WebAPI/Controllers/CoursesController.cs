@@ -22,7 +22,7 @@ namespace TalentAcademy.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest();
 
             var allCourses = await _mediator.Send(new GetAllCoursesQueryRequest());
@@ -65,7 +65,7 @@ namespace TalentAcademy.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            await _mediator.Send(new RemoveCourseCommandRequest(id)); 
+            await _mediator.Send(new RemoveCourseCommandRequest(id));
             return NoContent();
         }
     }

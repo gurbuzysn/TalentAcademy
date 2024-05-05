@@ -1,13 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TalentAcademy.Application.Repositories;
 using TalentAcademy.Domain.Entities;
-using TalentAcademy.Domain.Entities.Identitiy;
 
 namespace TalentAcademy.Application.Features.Commands.Topics.DeleteTopic
 {
@@ -27,7 +21,7 @@ namespace TalentAcademy.Application.Features.Commands.Topics.DeleteTopic
         {
             var deletedTopic = await _readRepository.GetByIdAsync(request.Id);
 
-            if(deletedTopic != null)
+            if (deletedTopic != null)
                 await _writeRepository.RemoveAsync(deletedTopic);
         }
     }
