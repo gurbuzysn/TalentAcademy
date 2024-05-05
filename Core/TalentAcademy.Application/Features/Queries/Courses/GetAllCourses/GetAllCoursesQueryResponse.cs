@@ -9,6 +9,5 @@ namespace TalentAcademy.Application.Features.Queries.Courses.GetAllCourses
 
         //Navigation Prop.
         public List<Topic> Topics { get; set; } = new();
-        public List<StudentCourse> StudentCourses { get; set; } = new();
     }
 }

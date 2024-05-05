@@ -9,7 +9,6 @@ namespace TalentAcademy.Domain.Entities
 
         //Navigation Prop.
         public List<Topic> Topics { get; set; } = new();
-        public List<StudentCourse> StudentCourses { get; set; } = new();
 
     }
 }

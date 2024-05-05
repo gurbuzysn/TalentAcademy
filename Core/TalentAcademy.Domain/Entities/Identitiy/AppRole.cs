@@ -2,7 +2,7 @@
 
 namespace TalentAcademy.Domain.Entities.Identitiy
 {
-    public class AppRole : IdentityRole
+    public class AppRole : IdentityRole<Guid>
     {
     }
 }

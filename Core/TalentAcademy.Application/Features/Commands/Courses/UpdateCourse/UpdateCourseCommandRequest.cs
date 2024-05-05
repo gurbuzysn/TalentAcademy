@@ -13,6 +13,5 @@ namespace TalentAcademy.Application.Features.Commands.Courses.UpdateCourse
 
 
         public List<Topic> Topics { get; set; } = new();
-        public List<StudentCourse> StudentCourses { get; set; } = new();
     }
 }

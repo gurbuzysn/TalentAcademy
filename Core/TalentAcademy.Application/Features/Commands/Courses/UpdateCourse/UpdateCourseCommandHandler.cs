@@ -27,7 +27,6 @@ namespace TalentAcademy.Application.Features.Commands.Courses.UpdateCourse
                 updatedCourse.Description = request.Description;
                 updatedCourse.UpdatedDate = DateTime.UtcNow;
                 updatedCourse.Topics = request.Topics;
-                updatedCourse.StudentCourses = request.StudentCourses;
 
                 await _writeRepository.UpdateAsync(updatedCourse);
             }
