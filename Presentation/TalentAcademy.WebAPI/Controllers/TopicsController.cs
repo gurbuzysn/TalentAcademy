@@ -1,5 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TalentAcademy.Application.Features.Commands.Topics.CreateTopic;
+using TalentAcademy.Application.Features.Commands.Topics.DeleteTopic;
+using TalentAcademy.Application.Features.Commands.Topics.UpdateTopic;
+using TalentAcademy.Application.Features.Queries.Topics.GetAllTopics;
+using TalentAcademy.Application.Features.Queries.Topics.GetTopicById;
 
 namespace TalentAcademy.WebAPI.Controllers
 {
@@ -17,31 +22,35 @@ namespace TalentAcademy.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            return Ok();
+            var result = await _mediator.Send(new GetAllTopicsQueryRequest());
+            return Ok(result);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> List(Guid id)
         {
-            
-            return Ok();
+            var result = await _mediator.Send(new GetTopicByIdQueryRequest(id));
+            return Ok(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create()
+        public async Task<IActionResult> Create(CreateTopicCommandRequest request)
         {
-            return Created();
+            var result = await _mediator.Send(request);
+            return Created("", result);
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update()
+        public async Task<IActionResult> Update(UpdateTopicCommandRequest request)
         {
+            await _mediator.Send(request);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
+            await _mediator.Send(new DeleteTopicCommandRequest(id));
             return NoContent();
         }
 
