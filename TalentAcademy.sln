@@ -19,6 +19,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TalentAcademy.Infrastructur
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TalentAcademy.WebAPI", "Presentation\TalentAcademy.WebAPI\TalentAcademy.WebAPI.csproj", "{B142BDFB-4105-4F2A-B674-55BCB9504F01}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation-ConsumeAPI", "Presentation-ConsumeAPI", "{7FAD0C8A-7296-4AC4-BFB9-FB4D6D23C64D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TalentAcademy.MVC", "Presentation-ConsumeAPI\TalentAcademy.MVC\TalentAcademy.MVC.csproj", "{5D57CE0F-30FD-44A4-AA50-5139849D8DF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,10 @@ Global
 		{B142BDFB-4105-4F2A-B674-55BCB9504F01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B142BDFB-4105-4F2A-B674-55BCB9504F01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B142BDFB-4105-4F2A-B674-55BCB9504F01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D57CE0F-30FD-44A4-AA50-5139849D8DF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D57CE0F-30FD-44A4-AA50-5139849D8DF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D57CE0F-30FD-44A4-AA50-5139849D8DF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D57CE0F-30FD-44A4-AA50-5139849D8DF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +63,7 @@ Global
 		{A6892413-93D1-48F0-B55F-288DC7614502} = {52691659-27A6-44C3-A042-3735C3F4E1F9}
 		{055F0BB3-1BF1-4365-927A-B53DC27413C6} = {52691659-27A6-44C3-A042-3735C3F4E1F9}
 		{B142BDFB-4105-4F2A-B674-55BCB9504F01} = {C2D9EF59-B5C8-4C55-BAE7-7A16836AC829}
+		{5D57CE0F-30FD-44A4-AA50-5139849D8DF5} = {7FAD0C8A-7296-4AC4-BFB9-FB4D6D23C64D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D056D1B-1A08-4B08-BBC1-A3D84C347FBB}
