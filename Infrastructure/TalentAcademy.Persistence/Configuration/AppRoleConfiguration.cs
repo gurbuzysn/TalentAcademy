@@ -7,22 +7,20 @@ using System.Text;
 using System.Threading.Tasks;
 using TalentAcademy.Domain.Entities.Identitiy;
 
-namespace TalentAcademy.Persistence.Configurations
+namespace TalentAcademy.Persistence.Configuration
 {
     public class AppRoleConfiguration : IEntityTypeConfiguration<AppRole>
     {
         public void Configure(EntityTypeBuilder<AppRole> builder)
         {
-            builder.Property(x => x.Name).IsRequired();
-
-            AppRole adminRole = new AppRole()
+            AppRole appRole = new()
             {
-                Id = new Guid(),
+                Id = Guid.NewGuid(),
                 Name = "Admin",
-                NormalizedName = "ADMIN"
+                NormalizedName = nameof(AppRole.Name).ToUpper()
             };
 
-            builder.HasData(adminRole);
+            builder.HasData(appRole);
         }
     }
 }

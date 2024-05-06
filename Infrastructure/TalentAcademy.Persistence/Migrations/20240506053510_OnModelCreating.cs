@@ -5,7 +5,7 @@
 namespace TalentAcademy.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedRoles : Migration
+    public partial class OnModelCreating : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

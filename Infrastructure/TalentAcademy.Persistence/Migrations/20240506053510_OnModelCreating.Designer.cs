@@ -12,8 +12,8 @@ using TalentAcademy.Persistence.Context;
 namespace TalentAcademy.Persistence.Migrations
 {
     [DbContext(typeof(TalentAcademyDbContext))]
-    [Migration("20240505211742_First")]
-    partial class First
+    [Migration("20240506053510_OnModelCreating")]
+    partial class OnModelCreating
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
