@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using TalentAcademy.Application;
+using TalentAcademy.Infrastructure.Token;
 using TalentAcademy.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +12,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddApplicationServices();
-
 builder.Services.AddPersistenceServices(builder.Configuration);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
@@ -18,11 +20,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
     opt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
     {
-        ValidAudience = JwtToken
+        ValidAudience = JwtTokenDefaults.ValidAudience,
+        ValidIssuer = JwtTokenDefaults.ValidIssuer,
+        ClockSkew = TimeSpan.Zero,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key)),
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true
     };
-
-
-   
 });
 
 
