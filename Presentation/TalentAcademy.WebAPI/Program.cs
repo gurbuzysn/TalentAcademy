@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TalentAcademy.Application;
 using TalentAcademy.Persistence;
 
@@ -11,7 +12,18 @@ builder.Services.AddApplicationServices();
 
 builder.Services.AddPersistenceServices(builder.Configuration);
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.RequireHttpsMetadata = false;
 
+    opt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    {
+        ValidAudience = JwtToken
+    };
+
+
+   
+});
 
 
 builder.Services.AddControllers().AddNewtonsoftJson(opt =>
