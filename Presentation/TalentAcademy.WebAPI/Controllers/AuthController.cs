@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using TalentAcademy.Application.Features.Queries.Auth;
+using TalentAcademy.Infrastructure.Token;
 
 namespace TalentAcademy.WebAPI.Controllers
 {
@@ -26,7 +27,7 @@ namespace TalentAcademy.WebAPI.Controllers
 
 
         [HttpPost("[action]")]
-        public async IActionResult Login(CheckUserQueryRequest request)
+        public async Task<IActionResult> Login(CheckUserQueryRequest request)
         {
             var dto = await _mediator.Send(request);
 

@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 using TalentAcademy.MVC.Models;
@@ -27,22 +31,37 @@ namespace TalentAcademy.MVC.Controllers
 
                 var content = new StringContent(JsonSerializer.Serialize(model), Encoding.UTF8, "application/json");
 
-                var response = await client.PostAsync("http://localhost:5020/api/Auth/Login", content);
+                var response = await client.PostAsync("https://localhost:5020/api/Auth/Login", content);
 
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonData = await response.Content.ReadAsStringAsync();
-                    var tokenModel = JsonSerializer.Deserialize<JwtTokenResponseModel>(jsonData);
+                    var tokenModel = JsonSerializer.Deserialize<JwtTokenResponseModel>(jsonData, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase});
+
+
+                    var token = new JwtSecurityTokenHandler().ReadJwtToken(tokenModel.Token);
+
+                    var claims = token.Claims.ToList();
+
+                    claims.Add(new Claim("accessToken", tokenModel.Token));
+
+                    var claimsIdentity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
+
+                    var authProps = new AuthenticationProperties
+                    {
+                        ExpiresUtc = tokenModel.ExpireDate,
+                        IsPersistent = true,
+                    };
+
+                    await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı")
+                    ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı");
                 }
-
             }
             return View(model);
         }
-
-
     }
 }
