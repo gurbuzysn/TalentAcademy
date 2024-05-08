@@ -34,8 +34,22 @@ namespace TalentAcademy.Persistence.Context
                 DateOfBirth = new DateTime(1993, 02, 25),
                 CreatedDate = DateTime.UtcNow
             };
-
             await userManager.CreateAsync(admin, AuthorizationConstant.ADMIN_PASSWORD);
+
+            var student = new AppUser()
+            {
+                Id = Guid.NewGuid(),
+                FirstName = AuthorizationConstant.STUDENT_FIRSTNAME,
+                LastName = AuthorizationConstant.STUDENT_LASTNAME,
+                UserName = AuthorizationConstant.STUDENT_USERNAME,
+                NormalizedUserName = AuthorizationConstant.STUDENT_USERNAME.ToUpper(),
+                Email = AuthorizationConstant.STUDENT_USERNAME,
+                NormalizedEmail = AuthorizationConstant.STUDENT_USERNAME.ToUpper(),
+                Gender = Gender.Kadın,
+                DateOfBirth = new DateTime(1995, 04, 27),
+                CreatedDate = DateTime.UtcNow
+            };
+            await userManager.CreateAsync(student, AuthorizationConstant.STUDENT_PASSWORD);
 
             await roleManager.CreateAsync(new AppRole()
             {
@@ -52,6 +66,7 @@ namespace TalentAcademy.Persistence.Context
             });
 
             await userManager.AddToRoleAsync(admin, AuthorizationConstant.Roles.ADMINISTRATOR);
+            await userManager.AddToRoleAsync(student, AuthorizationConstant.Roles.STUDENT);
         }
     }
 }
