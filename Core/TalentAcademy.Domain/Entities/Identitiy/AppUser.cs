@@ -9,7 +9,10 @@ namespace TalentAcademy.Domain.Entities.Identitiy
         public string LastName { get; set; } = null!;
         public string FullName => $"{FirstName} {LastName}";
         public Gender Gender { get; set; }
-        public DateTime BirthOfDate { get; set; }
-        public string? Image { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string? ImageUri { get; set; }
+
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
     }
 }

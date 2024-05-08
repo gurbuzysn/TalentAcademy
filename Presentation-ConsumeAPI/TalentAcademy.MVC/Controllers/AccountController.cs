@@ -31,7 +31,7 @@ namespace TalentAcademy.MVC.Controllers
 
                 var content = new StringContent(JsonSerializer.Serialize(model), Encoding.UTF8, "application/json");
 
-                var response = await client.PostAsync("https://localhost:5020/api/Auth/Login", content);
+                var response = await client.PostAsync("https://localhost:7043/api/Auth/Login", content);
 
                 if (response.IsSuccessStatusCode)
                 {
