@@ -58,7 +58,7 @@ using ( var scope = app.Services.CreateScope())
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<AppRole>>();
 
-    TalentAcademyDbContextSeedData.SeedAsync(context, userManager, roleManager);
+    await TalentAcademyDbContextSeedData.SeedAsync(context, userManager, roleManager);
 }
 
     app.Run();

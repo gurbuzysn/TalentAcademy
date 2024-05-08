@@ -13,14 +13,7 @@ namespace TalentAcademy.Persistence.Configuration
     {
         public void Configure(EntityTypeBuilder<AppRole> builder)
         {
-            AppRole appRole = new()
-            {
-                Id = Guid.NewGuid(),
-                Name = "Admin",
-                NormalizedName = nameof(AppRole.Name).ToUpper()
-            };
-
-            builder.HasData(appRole);
+            
         }
     }
 }

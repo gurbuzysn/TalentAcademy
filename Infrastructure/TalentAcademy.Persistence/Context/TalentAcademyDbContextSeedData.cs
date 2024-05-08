@@ -13,9 +13,11 @@ namespace TalentAcademy.Persistence.Context
 {
     public static class TalentAcademyDbContextSeedData
     {
-        public static async void SeedAsync(TalentAcademyDbContext context, UserManager<AppUser> userManager, RoleManager<AppRole> roleManager)
+        public static async Task SeedAsync(TalentAcademyDbContext context, UserManager<AppUser> userManager, RoleManager<AppRole> roleManager)
         {
-            if (await context.Users.AnyAsync() && await context.Roles.AnyAsync())
+            await context.Database.MigrateAsync();
+            
+            if (context.Users.Any() && context.Roles.Any())
                 return;
 
 

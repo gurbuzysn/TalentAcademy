@@ -126,9 +126,6 @@ namespace TalentAcademy.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DeletedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -162,14 +159,6 @@ namespace TalentAcademy.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("366771ae-117d-4c9a-a946-70c58a22ef43"),
-                            Name = "Admin",
-                            NormalizedName = "NAME"
-                        });
                 });
 
             modelBuilder.Entity("TalentAcademy.Domain.Entities.Identitiy.AppUser", b =>
@@ -257,9 +246,6 @@ namespace TalentAcademy.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DeletedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<TimeSpan>("Duration")
                         .HasColumnType("time");
 
@@ -294,9 +280,6 @@ namespace TalentAcademy.Persistence.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
