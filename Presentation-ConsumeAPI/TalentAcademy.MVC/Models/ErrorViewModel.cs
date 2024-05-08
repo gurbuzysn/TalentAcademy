@@ -1,4 +1,4 @@
-namespace TalentAcademy.MVC.Models
+﻿namespace TalentAcademy.MVC.Models
 {
     public class ErrorViewModel
     {

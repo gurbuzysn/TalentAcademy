@@ -36,7 +36,7 @@ namespace TalentAcademy.MVC.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonData = await response.Content.ReadAsStringAsync();
-                    var tokenModel = JsonSerializer.Deserialize<JwtTokenResponseModel>(jsonData, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase});
+                    var tokenModel = JsonSerializer.Deserialize<JwtTokenResponseModel>(jsonData, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
 
 
                     var token = new JwtSecurityTokenHandler().ReadJwtToken(tokenModel.Token);
@@ -54,7 +54,7 @@ namespace TalentAcademy.MVC.Controllers
                     };
 
                     await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home", new {Area = "Admin"});
                 }
                 else
                 {
