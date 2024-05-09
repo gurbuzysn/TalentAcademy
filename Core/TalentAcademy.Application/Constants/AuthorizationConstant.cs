@@ -13,9 +13,9 @@ namespace TalentAcademy.Application.Constants
         public const string ADMIN_USERNAME = "yasin.gurbuz@talentacademy.com";
         public const string ADMIN_PASSWORD = "Admin123*";
 
-        public const string STUDENT_FIRSTNAME = "Aslı";
-        public const string STUDENT_LASTNAME = "Çınar";
-        public const string STUDENT_USERNAME = "asli.cinar@talentacademy.com";
+        public const string STUDENT_FIRSTNAME = "Kerem";
+        public const string STUDENT_LASTNAME = "Gürbüz";
+        public const string STUDENT_USERNAME = "kerem.gurbuz@talentacademy.com";
         public const string STUDENT_PASSWORD = "Student123*";
 
         public static class Roles

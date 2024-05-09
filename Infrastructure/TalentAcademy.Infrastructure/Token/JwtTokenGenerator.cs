@@ -21,7 +21,7 @@ namespace TalentAcademy.Infrastructure.Token
             var claims = new List<Claim>();
 
             if (!string.IsNullOrWhiteSpace(dto.Role))
-                claims.Add(new Claim(ClaimTypes.Role, dto.Role));
+                claims.Add(new Claim("Role", dto.Role));
 
             claims.Add(new Claim(ClaimTypes.NameIdentifier, dto.Id.ToString()));
 

@@ -45,8 +45,8 @@ namespace TalentAcademy.Persistence.Context
                 NormalizedUserName = AuthorizationConstant.STUDENT_USERNAME.ToUpper(),
                 Email = AuthorizationConstant.STUDENT_USERNAME,
                 NormalizedEmail = AuthorizationConstant.STUDENT_USERNAME.ToUpper(),
-                Gender = Gender.Kadın,
-                DateOfBirth = new DateTime(1995, 04, 27),
+                Gender = Gender.Erkek,
+                DateOfBirth = new DateTime(2022, 08, 22),
                 CreatedDate = DateTime.UtcNow
             };
             await userManager.CreateAsync(student, AuthorizationConstant.STUDENT_PASSWORD);

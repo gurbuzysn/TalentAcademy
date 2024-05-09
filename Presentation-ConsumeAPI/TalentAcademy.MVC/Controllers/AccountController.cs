@@ -35,6 +35,7 @@ namespace TalentAcademy.MVC.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
+
                     var jsonData = await response.Content.ReadAsStringAsync();
                     var tokenModel = JsonSerializer.Deserialize<JwtTokenResponseModel>(jsonData, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
 
@@ -53,8 +54,15 @@ namespace TalentAcademy.MVC.Controllers
                         IsPersistent = true,
                     };
 
+                    var userRole = claims[0].ToString();
+                    var header = "Role: ";
+                    int index = userRole.IndexOf(header);
+
+                    string aimWord = userRole.Substring(index + header.Length);
+                    Console.WriteLine(aimWord);
+
                     await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
-                    return RedirectToAction("Index", "Home", new {Area = "Admin"});
+                    return RedirectToAction("Index", "Home", new { Area = aimWord});
                 }
                 else
                 {
@@ -63,5 +71,16 @@ namespace TalentAcademy.MVC.Controllers
             }
             return View(model);
         }
+
+
+
+        [HttpGet]
+        public IActionResult AbidikAction()
+        {
+            return View();
+        }
+
+
+
     }
 }

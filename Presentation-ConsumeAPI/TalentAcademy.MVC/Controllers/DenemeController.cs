@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace TalentAcademy.MVC.Areas.Admin.Controllers
+namespace TalentAcademy.MVC.Controllers
 {
-    [Area("Admin")]
     public class DenemeController : Controller
     {
-        public IActionResult Dashboard()
+        public IActionResult Kerem()
         {
             return View();
         }

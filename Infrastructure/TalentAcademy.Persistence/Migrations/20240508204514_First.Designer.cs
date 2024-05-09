@@ -12,7 +12,7 @@ using TalentAcademy.Persistence.Context;
 namespace TalentAcademy.Persistence.Migrations
 {
     [DbContext(typeof(TalentAcademyDbContext))]
-    [Migration("20240508104831_First")]
+    [Migration("20240508204514_First")]
     partial class First
     {
         /// <inheritdoc />
