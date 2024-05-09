@@ -16,8 +16,6 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Student\Data\" />
     <Folder Include="Areas\Student\Models\" />
-    <Folder Include="Areas\Trying\Data\" />
-    <Folder Include="Areas\Trying\Models\" />
   </ItemGroup>
 
 </Project>
