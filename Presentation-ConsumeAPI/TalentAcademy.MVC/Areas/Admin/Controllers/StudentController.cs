@@ -16,6 +16,8 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
         {
             _httpClientFactory = httpClientFactory;
         }
+
+
         public async Task<IActionResult> List()
         {
             var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.ToString();
@@ -29,11 +31,32 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonData = await response.Content.ReadAsStringAsync();
-                    var result = JsonSerializer.Deserialize<StudentListModel>(jsonData, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+                    var result = JsonSerializer.Deserialize<List<StudentListModel>>(jsonData, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
                     return View(result);
                 }
             }
             return View();
         }
+
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+
+
+        [HttpPost]
+        public IActionResult Create(StudentCreateModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            return RedirectToAction("List");
+        }
+
+
+
     }
 }

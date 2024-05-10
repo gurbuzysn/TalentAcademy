@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,8 +25,7 @@ namespace TalentAcademy.Persistence
                 options.Password.RequireLowercase = true;
             })
                .AddEntityFrameworkStores<TalentAcademyDbContext>()
-              .AddDefaultTokenProviders()
-              .AddUserManager<UserManager<Student>>();
+              .AddDefaultTokenProviders();
 
             services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
             services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));

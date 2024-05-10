@@ -13,7 +13,7 @@ namespace TalentAcademy.Application.MappingProfile
     {
         public StudentProfile()
         {
-            CreateMap<Student, GetAllStudentsQueryResponse>();
+            CreateMap<AppUser, GetAllStudentsQueryResponse>();
         }
     }
 }
