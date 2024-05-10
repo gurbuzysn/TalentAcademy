@@ -18,15 +18,12 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
         }
         public async Task<IActionResult> List()
         {
-
             var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.ToString();
 
             if (token != null)
             {
                 var client = _httpClientFactory.CreateClient();
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-
-
                 var response = await client.GetAsync("https://localhost:7043/api/Student");
 
                 if (response != null)
