@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TalentAcademy.Application.Features.Queries.Students.GetAllStudents;
 
 namespace TalentAcademy.WebAPI.Controllers
 {

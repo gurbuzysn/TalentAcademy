@@ -22,6 +22,21 @@ namespace TalentAcademy.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("AppRoleAppUser", b =>
+                {
+                    b.Property<Guid>("AppRolesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AppUsersId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("AppRolesId", "AppUsersId");
+
+                    b.HasIndex("AppUsersId");
+
+                    b.ToTable("AppRoleAppUser");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.Property<int>("Id")
@@ -294,6 +309,21 @@ namespace TalentAcademy.Persistence.Migrations
                     b.HasIndex("CourseId");
 
                     b.ToTable("Topics");
+                });
+
+            modelBuilder.Entity("AppRoleAppUser", b =>
+                {
+                    b.HasOne("TalentAcademy.Domain.Entities.Identitiy.AppRole", null)
+                        .WithMany()
+                        .HasForeignKey("AppRolesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TalentAcademy.Domain.Entities.Identitiy.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("AppUsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TalentAcademy.Domain.Entities.Lesson", b =>

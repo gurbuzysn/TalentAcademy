@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,22 +11,19 @@ using TalentAcademy.Domain.Entities.Identitiy;
 
 namespace TalentAcademy.Application.Features.Queries.Students.GetAllStudents
 {
-    public class GetAllStudentsQueryHandler : IRequestHandler<GetAllStudentsQueryRequest, GetAllStudentsQueryResponse>
+    public class GetAllStudentsQueryHandler : IRequestHandler<GetAllStudentsQueryRequest, List<GetAllStudentsQueryResponse>>
     {
-        private readonly IReadRepository<AppUser> _readRepository;
-        private readonly IMapper _mapper;
+        private readonly UserManager<AppUser> _userManager;
 
-        public GetAllStudentsQueryHandler(IReadRepository<AppUser> readRepository, IMapper mapper)
+        public GetAllStudentsQueryHandler(UserManager<AppUser> userManager)
         {
-            _readRepository = readRepository;
-            _mapper = mapper;
+            _userManager = userManager;
         }
-        public Task<GetAllStudentsQueryResponse> Handle(GetAllStudentsQueryRequest request, CancellationToken cancellationToken)
+        public async Task<List<GetAllStudentsQueryResponse>> Handle(GetAllStudentsQueryRequest request, CancellationToken cancellationToken)
         {
-            var allUsers = _readRepository.GetAllAsync();
+            var allStudents = await _userManager.GetUsersInRoleAsync("Admin");
 
-            var allStudents = allUsers.Result.Where(x => x. == "")
-            
+            return new List<GetAllStudentsQueryResponse>();
         }
     }
 }

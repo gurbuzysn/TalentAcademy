@@ -164,6 +164,30 @@ namespace TalentAcademy.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AppRoleAppUser",
+                columns: table => new
+                {
+                    AppRolesId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AppUsersId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AppRoleAppUser", x => new { x.AppRolesId, x.AppUsersId });
+                    table.ForeignKey(
+                        name: "FK_AppRoleAppUser_Roles_AppRolesId",
+                        column: x => x.AppRolesId,
+                        principalTable: "Roles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AppRoleAppUser_Users_AppUsersId",
+                        column: x => x.AppUsersId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Lessons",
                 columns: table => new
                 {
@@ -187,6 +211,11 @@ namespace TalentAcademy.Persistence.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_AppRoleAppUser_AppUsersId",
+                table: "AppRoleAppUser",
+                column: "AppUsersId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Lessons_TopicId",
                 table: "Lessons",
                 column: "TopicId");
@@ -201,13 +230,13 @@ namespace TalentAcademy.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "AppRoleAppUser");
+
+            migrationBuilder.DropTable(
                 name: "Lessons");
 
             migrationBuilder.DropTable(
                 name: "RoleClaims");
-
-            migrationBuilder.DropTable(
-                name: "Roles");
 
             migrationBuilder.DropTable(
                 name: "UserClaims");
@@ -219,10 +248,13 @@ namespace TalentAcademy.Persistence.Migrations
                 name: "UserRoles");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "UserTokens");
 
             migrationBuilder.DropTable(
-                name: "UserTokens");
+                name: "Roles");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Topics");

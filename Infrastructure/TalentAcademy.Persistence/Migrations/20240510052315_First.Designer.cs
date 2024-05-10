@@ -12,7 +12,7 @@ using TalentAcademy.Persistence.Context;
 namespace TalentAcademy.Persistence.Migrations
 {
     [DbContext(typeof(TalentAcademyDbContext))]
-    [Migration("20240508204514_First")]
+    [Migration("20240510052315_First")]
     partial class First
     {
         /// <inheritdoc />
@@ -24,6 +24,21 @@ namespace TalentAcademy.Persistence.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("AppRoleAppUser", b =>
+                {
+                    b.Property<Guid>("AppRolesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AppUsersId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("AppRolesId", "AppUsersId");
+
+                    b.HasIndex("AppUsersId");
+
+                    b.ToTable("AppRoleAppUser");
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
@@ -297,6 +312,21 @@ namespace TalentAcademy.Persistence.Migrations
                     b.HasIndex("CourseId");
 
                     b.ToTable("Topics");
+                });
+
+            modelBuilder.Entity("AppRoleAppUser", b =>
+                {
+                    b.HasOne("TalentAcademy.Domain.Entities.Identitiy.AppRole", null)
+                        .WithMany()
+                        .HasForeignKey("AppRolesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TalentAcademy.Domain.Entities.Identitiy.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("AppUsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TalentAcademy.Domain.Entities.Lesson", b =>
