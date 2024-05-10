@@ -14,7 +14,5 @@ namespace TalentAcademy.Domain.Entities.Identitiy
 
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
-
-        public List<AppRole> AppRoles { get; set; } = null!;
     }
 }

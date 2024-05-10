@@ -22,8 +22,10 @@ namespace TalentAcademy.Persistence
                 options.Password.RequireDigit = true;
                 options.Password.RequireUppercase = true;
                 options.Password.RequireLowercase = true;
-            }).AddEntityFrameworkStores<TalentAcademyDbContext>()
-              .AddDefaultTokenProviders();
+            })
+               .AddEntityFrameworkStores<TalentAcademyDbContext>()
+              .AddDefaultTokenProviders()
+              .AddUserManager<UserManager<Student>>();
 
             services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
             services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));

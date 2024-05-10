@@ -12,7 +12,7 @@ using TalentAcademy.Persistence.Context;
 namespace TalentAcademy.Persistence.Migrations
 {
     [DbContext(typeof(TalentAcademyDbContext))]
-    [Migration("20240510052315_First")]
+    [Migration("20240510110207_First")]
     partial class First
     {
         /// <inheritdoc />
@@ -24,21 +24,6 @@ namespace TalentAcademy.Persistence.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("AppRoleAppUser", b =>
-                {
-                    b.Property<Guid>("AppRolesId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("AppUsersId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("AppRolesId", "AppUsersId");
-
-                    b.HasIndex("AppUsersId");
-
-                    b.ToTable("AppRoleAppUser");
-                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
@@ -59,7 +44,9 @@ namespace TalentAcademy.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RoleClaims");
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
@@ -81,14 +68,13 @@ namespace TalentAcademy.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserClaims");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("LoginProvider")
                         .HasColumnType("nvarchar(450)");
 
@@ -98,9 +84,14 @@ namespace TalentAcademy.Persistence.Migrations
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UserId", "LoginProvider", "ProviderKey");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.ToTable("UserLogins");
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
@@ -113,7 +104,9 @@ namespace TalentAcademy.Persistence.Migrations
 
                     b.HasKey("UserId", "RoleId");
 
-                    b.ToTable("UserRoles");
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
@@ -132,7 +125,7 @@ namespace TalentAcademy.Persistence.Migrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("UserTokens");
+                    b.ToTable("AspNetUserTokens", (string)null);
                 });
 
             modelBuilder.Entity("TalentAcademy.Domain.Entities.Course", b =>
@@ -151,10 +144,15 @@ namespace TalentAcademy.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("StudentId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("Courses");
                 });
@@ -166,17 +164,25 @@ namespace TalentAcademy.Persistence.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles");
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
                 });
 
             modelBuilder.Entity("TalentAcademy.Domain.Entities.Identitiy.AppUser", b =>
@@ -189,6 +195,7 @@ namespace TalentAcademy.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
@@ -197,8 +204,14 @@ namespace TalentAcademy.Persistence.Migrations
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
@@ -224,10 +237,12 @@ namespace TalentAcademy.Persistence.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
@@ -248,11 +263,24 @@ namespace TalentAcademy.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("AppUser");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("TalentAcademy.Domain.Entities.Lesson", b =>
@@ -314,19 +342,69 @@ namespace TalentAcademy.Persistence.Migrations
                     b.ToTable("Topics");
                 });
 
-            modelBuilder.Entity("AppRoleAppUser", b =>
+            modelBuilder.Entity("TalentAcademy.Domain.Entities.Identitiy.Student", b =>
+                {
+                    b.HasBaseType("TalentAcademy.Domain.Entities.Identitiy.AppUser");
+
+                    b.HasDiscriminator().HasValue("Student");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.HasOne("TalentAcademy.Domain.Entities.Identitiy.AppRole", null)
                         .WithMany()
-                        .HasForeignKey("AppRolesId")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
+                {
+                    b.HasOne("TalentAcademy.Domain.Entities.Identitiy.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
+                {
+                    b.HasOne("TalentAcademy.Domain.Entities.Identitiy.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
+                {
+                    b.HasOne("TalentAcademy.Domain.Entities.Identitiy.AppRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TalentAcademy.Domain.Entities.Identitiy.AppUser", null)
                         .WithMany()
-                        .HasForeignKey("AppUsersId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
+                {
+                    b.HasOne("TalentAcademy.Domain.Entities.Identitiy.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("TalentAcademy.Domain.Entities.Course", b =>
+                {
+                    b.HasOne("TalentAcademy.Domain.Entities.Identitiy.Student", null)
+                        .WithMany("Courses")
+                        .HasForeignKey("StudentId");
                 });
 
             modelBuilder.Entity("TalentAcademy.Domain.Entities.Lesson", b =>
@@ -359,6 +437,11 @@ namespace TalentAcademy.Persistence.Migrations
             modelBuilder.Entity("TalentAcademy.Domain.Entities.Topic", b =>
                 {
                     b.Navigation("Lessons");
+                });
+
+            modelBuilder.Entity("TalentAcademy.Domain.Entities.Identitiy.Student", b =>
+                {
+                    b.Navigation("Courses");
                 });
 #pragma warning restore 612, 618
         }

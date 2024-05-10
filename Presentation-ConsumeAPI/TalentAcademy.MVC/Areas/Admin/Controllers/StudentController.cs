@@ -24,9 +24,9 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
             {
                 var client = _httpClientFactory.CreateClient();
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                var response = await client.GetAsync("https://localhost:7043/api/Student");
+                var response = await client.GetAsync("https://localhost:7043/api/Students");
 
-                if (response != null)
+                if (response.IsSuccessStatusCode)
                 {
                     var jsonData = await response.Content.ReadAsStringAsync();
                     var result = JsonSerializer.Deserialize<StudentListModel>(jsonData, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });

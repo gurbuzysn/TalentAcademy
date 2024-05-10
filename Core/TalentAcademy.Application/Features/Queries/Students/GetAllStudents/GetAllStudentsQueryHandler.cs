@@ -13,17 +13,19 @@ namespace TalentAcademy.Application.Features.Queries.Students.GetAllStudents
 {
     public class GetAllStudentsQueryHandler : IRequestHandler<GetAllStudentsQueryRequest, List<GetAllStudentsQueryResponse>>
     {
-        private readonly UserManager<AppUser> _userManager;
+        private readonly UserManager<Student> _userManager;
+        private readonly IMapper _mapper;
 
-        public GetAllStudentsQueryHandler(UserManager<AppUser> userManager)
+        public GetAllStudentsQueryHandler(UserManager<Student> userManager, IMapper mapper)
         {
             _userManager = userManager;
+            _mapper = mapper;
         }
         public async Task<List<GetAllStudentsQueryResponse>> Handle(GetAllStudentsQueryRequest request, CancellationToken cancellationToken)
         {
-            var allStudents = await _userManager.GetUsersInRoleAsync("Admin");
-
-            return new List<GetAllStudentsQueryResponse>();
+            var allStudents = await _userManager.GetUsersInRoleAsync("Student");
+            var allStudentsDto = _mapper.Map<List<GetAllStudentsQueryResponse>>(allStudents);
+            return allStudentsDto;
         }
     }
 }
