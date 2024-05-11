@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TalentAcademy.Application.Features.Commands.Student.CreateStudent;
+using TalentAcademy.Application.Features.Commands.Student.DeleteStudent;
 using TalentAcademy.Application.Features.Queries.Students.GetAllStudents;
 
 namespace TalentAcademy.WebAPI.Controllers
@@ -21,6 +23,20 @@ namespace TalentAcademy.WebAPI.Controllers
         {
             var result = await _mediator.Send(new GetAllStudentsQueryRequest());
             return Ok(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateStudentCommandRequest request)
+        {
+            await _mediator.Send(request);
+            return Created();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await _mediator.Send(new DeleteStudentCommandRequest(id));
+            return NoContent();
         }
 
 
