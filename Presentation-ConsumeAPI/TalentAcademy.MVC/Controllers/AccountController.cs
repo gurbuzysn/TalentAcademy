@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 using TalentAcademy.MVC.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace TalentAcademy.MVC.Controllers
 {
@@ -62,7 +63,7 @@ namespace TalentAcademy.MVC.Controllers
                     Console.WriteLine(aimWord);
 
                     await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
-                    return RedirectToAction("Index", "Home", new { Area = aimWord});
+                    return RedirectToAction("Index", "Home", new { Area = aimWord });
                 }
                 else
                 {
@@ -75,10 +76,23 @@ namespace TalentAcademy.MVC.Controllers
 
 
         [HttpGet]
-        public IActionResult AbidikAction()
+        public async Task<IActionResult> LogOut()
         {
-            return View();
+            //var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+
+            //var client = _httpClientFactory.CreateClient();
+
+            //client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            //var response = await client.GetAsync("https://localhost/api/Auth/Logout");
+
+
+            HttpContext.SignOutAsync();
+
+            return RedirectToAction("Login");
         }
+
+
+
 
 
 

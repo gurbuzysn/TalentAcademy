@@ -41,12 +41,12 @@
 
 <body>
     <!-- ======= Header ======= -->
-    <header id="header" class="header fixed-top d-flex align-items-center bg-warning">
+    <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
             <a asp-controller="Home" asp-action="Index" class="logo d-flex align-items-center">
                 <img src="~/assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">NiceAdmin</span>
+                <span class="d-none d-lg-block">Talent Academy</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
@@ -204,30 +204,36 @@
                             <a href="#">Show all messages</a>
                         </li>
 
-                    </ul><!-- End Messages Dropdown Items -->
+                    </ul>
 
-                </li><!-- End Messages Nav -->
+                </li>
 
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <img src="~/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
-                    </a><!-- End Profile Iamge Icon -->
+                        <div class="d-flex flex-column align-items-center">
+                            <span class="d-none d-md-block ps-2">@User.Claims.FirstOrDefault(x => x.Type == "FullName")!.Value</span>
+                            <span>@User.Claims.FirstOrDefault(x => x.Type == "Role")!.Value</span>
+                        </div>
+                        <span class="dropdown-toggle ms-3"></span>
+                    </a>
+
+
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Kevin Anderson</h6>
-                            <span>Web Designer</span>
+                            <h6>@User.Claims.FirstOrDefault(x => x.Type == "FullName")!.Value</h6>
+                            <span>@User.Claims.FirstOrDefault(x => x.Type == "Role")!.Value</span>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                            <a class="dropdown-item d-flex align-items-center" asp-controller="Home" asp-action="Index">
                                 <i class="bi bi-person"></i>
-                                <span>My Profile</span>
+                                <span>Profilim</span>
                             </a>
                         </li>
                         <li>
@@ -237,7 +243,7 @@
                         <li>
                             <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                                 <i class="bi bi-gear"></i>
-                                <span>Account Settings</span>
+                                <span>Ayarlar</span>
                             </a>
                         </li>
                         <li>
@@ -247,7 +253,7 @@
                         <li>
                             <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
                                 <i class="bi bi-question-circle"></i>
-                                <span>Need Help?</span>
+                                <span>Yardım</span>
                             </a>
                         </li>
                         <li>
@@ -255,9 +261,9 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" asp-area="" asp-controller="Account" asp-action="Logout">
                                 <i class="bi bi-box-arrow-right"></i>
-                                <span>Sign Out</span>
+                                <span>Çıkış Yap</span>
                             </a>
                         </li>
 
@@ -292,7 +298,7 @@
                             <i class="bi bi-circle"></i><span>Listele</span>
                         </a>
                     </li>
-                    
+
                 </ul>
             </li>
 
@@ -312,12 +318,12 @@
 
 
 
-        @*     <li class="nav-heading">Pages</li>
+            @*     <li class="nav-heading">Pages</li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="users-profile.html">
-                    <i class="bi bi-person"></i>
-                    <span>Profile</span>
-                </a>
+            <a class="nav-link collapsed" href="users-profile.html">
+            <i class="bi bi-person"></i>
+            <span>Profile</span>
+            </a>
             </li> *@
 
 
@@ -335,7 +341,7 @@
         <div class="copyright">
             &copy; Copyright <strong><span>Yasin Gürbüz</span></strong>. All Rights Reserved
         </div>
-      
+
     </footer><!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

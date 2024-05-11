@@ -38,6 +38,7 @@ namespace TalentAcademy.Application.Features.Queries.Auth
             {
                 queryResponse.Id = user.Id;
                 queryResponse.UserName = user.UserName;
+                queryResponse.FullName = user.FullName;
                 queryResponse.IsExist = true;
                 queryResponse.Role = userRole;
             }

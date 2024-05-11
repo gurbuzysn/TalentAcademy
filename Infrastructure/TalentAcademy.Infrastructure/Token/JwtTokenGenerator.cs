@@ -33,6 +33,10 @@ namespace TalentAcademy.Infrastructure.Token
             if (!string.IsNullOrWhiteSpace(dto.UserName))
                 claims.Add(new Claim("UserName", dto.UserName));
 
+
+            claims.Add(new Claim("FullName", dto.FullName));
+
+
             var expireDate = DateTime.UtcNow.AddDays(JwtTokenDefaults.Expire);
 
 

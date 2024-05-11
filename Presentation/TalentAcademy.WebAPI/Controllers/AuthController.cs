@@ -1,6 +1,8 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TalentAcademy.Application.Features.Queries.Auth;
+using TalentAcademy.Domain.Entities.Identitiy;
 using TalentAcademy.Infrastructure.Token;
 
 namespace TalentAcademy.WebAPI.Controllers
@@ -10,10 +12,12 @@ namespace TalentAcademy.WebAPI.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly UserManager<AppUser> _userManager;
 
-        public AuthController(IMediator mediator)
+        public AuthController(IMediator mediator, UserManager<AppUser> userManager)
         {
             _mediator = mediator;
+            _userManager = userManager;
         }
 
 
@@ -36,5 +40,15 @@ namespace TalentAcademy.WebAPI.Controllers
             else
                 return BadRequest("Kullanıcı adı veya şifre hatalı");
         }
+
+
+        //[HttpGet("[action]")]
+        //public async Task<IActionResult> Logout()
+        //{
+        //    _userManager
+        //    return Ok();
+        //}
+
+
     }
 }
