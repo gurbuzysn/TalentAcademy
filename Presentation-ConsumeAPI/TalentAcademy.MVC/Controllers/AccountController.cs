@@ -55,15 +55,40 @@ namespace TalentAcademy.MVC.Controllers
                         IsPersistent = true,
                     };
 
-                    var userRole = claims[0].ToString();
-                    var header = "Role: ";
-                    int index = userRole.IndexOf(header);
 
-                    string aimWord = userRole.Substring(index + header.Length);
-                    Console.WriteLine(aimWord);
 
+
+                    //User.Claims.ToString();
+                    //User.Identity.ToString();
+
+                    //var fullName = User.Claims.FirstOrDefault(x => x.Type == "FullName")!.Value;
+
+
+
+
+
+                    //var userRole = claims[0].ToString();
+                    //var header = "Role: ";
+                    //int index = userRole.IndexOf(header);
+
+                   
+
+                    //string aimWord = userRole.Substring(index + header.Length);
+                    //Console.WriteLine(aimWord);
+
+
+                    var role = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)!.Value;
                     await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
-                    return RedirectToAction("Index", "Home", new { Area = aimWord });
+                    return RedirectToAction("Index", "Home", new { Area = role });
+
+
+
+
+
+                    //return RedirectToAction("Index", "Home", new { Area = User.Claims.FirstOrDefault(x => x.Type == "Role")!.Value.ToString() });
+                    //return RedirectToAction("Index", "Home", new { Area = User.Claims});
+
+
                 }
                 else
                 {
