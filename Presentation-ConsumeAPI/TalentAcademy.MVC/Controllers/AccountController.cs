@@ -67,19 +67,24 @@ namespace TalentAcademy.MVC.Controllers
 
 
 
-                    //var userRole = claims[0].ToString();
-                    //var header = "Role: ";
-                    //int index = userRole.IndexOf(header);
-
-                   
-
-                    //string aimWord = userRole.Substring(index + header.Length);
-                    //Console.WriteLine(aimWord);
+                    var userRole = claims[0].ToString();
+                    var header = "Role: ";
+                    int index = userRole.IndexOf(header);
 
 
-                    var role = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)!.Value;
+
+                    string aimWord = userRole.Substring(index + header.Length);
+                    Console.WriteLine(aimWord);
+
+
+                    //var role = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role).Value;
+
+
+
+
+
                     await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
-                    return RedirectToAction("Index", "Home", new { Area = role });
+                    return RedirectToAction("Index", "Home", new { Area = aimWord });
 
 
 
