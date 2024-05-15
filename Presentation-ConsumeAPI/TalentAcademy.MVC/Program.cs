@@ -1,3 +1,5 @@
+using AspNetCoreHero.ToastNotification;
+using AspNetCoreHero.ToastNotification.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +16,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCo
     opt.Cookie.HttpOnly = true;
     opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
     opt.Cookie.Name = "TalentAcademy";
+});
+
+builder.Services.AddNotyf(cfg =>
+{
+    cfg.DurationInSeconds = 3;
+    cfg.IsDismissable = true;
+    cfg.Position = NotyfPosition.BottomRight;
 });
 
 
@@ -41,5 +50,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Account}/{action=Login}/{id?}");
 
+app.UseNotyf();
 
 app.Run();

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Common;
 using System.Security.Claims;
@@ -14,14 +15,17 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly INotyfService _notyf;
 
-        public HomeController(IWebHostEnvironment webHostEnvironment, IHttpClientFactory httpClientFactory)
+        public HomeController(IWebHostEnvironment webHostEnvironment, IHttpClientFactory httpClientFactory, INotyfService notyf)
         {
             _webHostEnvironment = webHostEnvironment;
             _httpClientFactory = httpClientFactory;
+            _notyf = notyf;
         }
         public IActionResult Index()
         {
+            _notyf.Information("Başarıyla Giriş Yapnıtız");
             return View();
         }
 
