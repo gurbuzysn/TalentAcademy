@@ -30,13 +30,6 @@
     <!-- Template Main CSS File -->
     <link href="~/assets/css/style.css" rel="stylesheet">
 
-    <!-- =======================================================
-    * Template Name: NiceAdmin
-    * Updated: Mar 13 2024 with Bootstrap v5.3.3
-    * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
 </head>
 
 <body>
@@ -203,11 +196,8 @@
                         <li class="dropdown-footer">
                             <a href="#">Show all messages</a>
                         </li>
-
                     </ul>
-
                 </li>
-
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
@@ -266,10 +256,8 @@
 
                     </ul><!-- End Profile Dropdown Items -->
                 </li><!-- End Profile Nav -->
-
             </ul>
         </nav><!-- End Icons Navigation -->
-
     </header><!-- End Header -->
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
@@ -278,16 +266,13 @@
 
             <li class="nav-item">
                 <a class="nav-link " asp-action="Index" asp-controller="Home">
-                    <i class="bi bi-grid"></i>
+                    <i class="bi bi-house-door"></i>
                     <span>Ana Sayfa</span>
                 </a>
             </li><!-- End Dashboard Nav -->
-
-
-
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#components-nav-student" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-menu-button-wide"></i><span>Öğrenci İşlemleri</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-person-lines-fill"></i><span>Öğrenci İşlemleri</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="components-nav-student" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
@@ -298,10 +283,9 @@
 
                 </ul>
             </li>
-
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#components-nav-course" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-menu-button-wide"></i><span>Kurs İşlemleri</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-book"></i><span>Kurs İşlemleri</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="components-nav-course" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
@@ -313,7 +297,6 @@
                 </ul>
             </li>
         </ul>
-
     </aside><!-- End Sidebar-->
 
     <main id="main" class="main">
@@ -329,7 +312,7 @@
     </footer><!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
+    
     <!-- Vendor JS Files -->
     <script src="~/assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -340,22 +323,13 @@
     <script src="~/assets/vendor/tinymce/tinymce.min.js"></script>
     <script src="~/assets/vendor/php-email-form/validate.js"></script>
 
-
-
-    @* <a href="~/lib/jquery/dist/jquery.min.map">~/lib/jquery/dist/jquery.min.map</a> *@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    @* <script src="~/lib/jquery/dist/jquery.js"></script> *@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
-
-
-    <!-- Template Main JS File -->
     <script src="~/assets/js/main.js"></script>
 
     @await Component.InvokeAsync("Notyf");
     @await RenderSectionAsync("Scripts", required: false);
 
 </body>
-
 </html>

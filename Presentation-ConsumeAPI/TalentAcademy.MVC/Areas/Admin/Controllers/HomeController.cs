@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 using TalentAcademy.MVC.Areas.Admin.Models;
+using TalentAcademy.MVC.Areas.Admin.Models.Admin;
 using TalentAcademy.MVC.Areas.Admin.Models.Student;
 
 namespace TalentAcademy.MVC.Areas.Admin.Controllers
@@ -23,35 +24,27 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
             _httpClientFactory = httpClientFactory;
             _notyf = notyf;
         }
-        public IActionResult Index()
+        public IActionResult Index(AdminDashboardModel model)
         {
-            return View();
+            return View(model);
         }
 
         public async Task<IActionResult> Profile()
         {
-            var userId = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value;
+            var userId = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)!.Value;
             var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.ToString();
 
             var client = _httpClientFactory.CreateClient();
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-
             var content = new StringContent(JsonSerializer.Serialize(userId), Encoding.UTF8, "application/json");
-
             var response = await client.PostAsync("https://localhost:7043/api/User", content);
 
             if(response.IsSuccessStatusCode)
             {
                 var jsonData = await response.Content.ReadAsStringAsync();
-                //var result = JsonSerializer.Deserialize<UserInfoModel>(jsonData, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
-
-
                 var result = JsonSerializer.Deserialize<UserInfoModel>(jsonData);
-
-
                 return View(result);
             }
-
             return NoContent();
         }
 
@@ -69,10 +62,7 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
             {
                 await file.CopyToAsync(stream);
             }
-
             return Ok("Dosya başarıyla yüklendi");
         }
-
-
     }
 }
