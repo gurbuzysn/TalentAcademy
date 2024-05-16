@@ -37,7 +37,7 @@ namespace TalentAcademy.Infrastructure.Token
             claims.Add(new Claim("FullName", dto.FullName));
 
 
-            var expireDate = DateTime.UtcNow.AddDays(JwtTokenDefaults.Expire);
+            var expireDate = DateTime.UtcNow.AddMinutes(JwtTokenDefaults.Expire);
 
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key));
