@@ -20,9 +20,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCo
 
 builder.Services.AddNotyf(cfg =>
 {
-    cfg.DurationInSeconds = 3;
+    cfg.DurationInSeconds = 7;
     cfg.IsDismissable = true;
     cfg.Position = NotyfPosition.BottomRight;
+    cfg.HasRippleEffect = true;
 });
 
 

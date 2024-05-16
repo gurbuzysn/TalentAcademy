@@ -25,7 +25,6 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            _notyf.Information("Başarıyla Giriş Yapnıtız");
             return View();
         }
 

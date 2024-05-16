@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -14,10 +15,12 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
     public class StudentController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly INotyfService _notyf;
 
-        public StudentController(IHttpClientFactory httpClientFactory)
+        public StudentController(IHttpClientFactory httpClientFactory, INotyfService notyf)
         {
             _httpClientFactory = httpClientFactory;
+            _notyf = notyf;
         }
 
 

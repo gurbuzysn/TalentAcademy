@@ -16,22 +16,19 @@ namespace TalentAcademy.MVC.Controllers
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly INotyfService _notyf;
 
-        public AccountController(IHttpClientFactory httpClientFactory, INotyfService notyf )
+        public AccountController(IHttpClientFactory httpClientFactory, INotyfService notyf)
         {
             _httpClientFactory = httpClientFactory;
             _notyf = notyf;
         }
         public IActionResult Login()
         {
-            _notyf.Information("Login Sayfası GET");
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Login(UserLoginModel model)
         {
-            _notyf.Success("Login Sayfası POST");
-
             if (ModelState.IsValid)
             {
                 var client = _httpClientFactory.CreateClient();
@@ -67,9 +64,9 @@ namespace TalentAcademy.MVC.Controllers
                 else
                 {
                     ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı");
-                    _notyf.Error("Kullanıcı adı veya şifre hatalı");
                 }
             }
+            _notyf.Error("Kullanıcı adı veya şifre hatalı. Lütfen tekrar deneyiniz.", 5);
             return View(model);
         }
 
@@ -77,7 +74,6 @@ namespace TalentAcademy.MVC.Controllers
         public async Task<IActionResult> LogOut()
         {
             HttpContext.SignOutAsync();
-            _notyf.Warning("Çıkış yapılmıştır.");
             return RedirectToAction("Login");
         }
     }
