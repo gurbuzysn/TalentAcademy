@@ -12,9 +12,9 @@ namespace TalentAcademy.WebAPI.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly UserManager<AppUser> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public AuthController(IMediator mediator, UserManager<AppUser> userManager)
+        public AuthController(IMediator mediator, UserManager<IdentityUser> userManager)
         {
             _mediator = mediator;
             _userManager = userManager;

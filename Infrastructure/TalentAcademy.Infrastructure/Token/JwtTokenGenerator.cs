@@ -23,26 +23,18 @@ namespace TalentAcademy.Infrastructure.Token
             if (!string.IsNullOrWhiteSpace(dto.Role))
                 claims.Add(new Claim("Role", dto.Role));
 
-
             claims.Add(new Claim(ClaimTypes.Role, dto.Role));
-
-
-
             claims.Add(new Claim(ClaimTypes.NameIdentifier, dto.Id.ToString()));
 
             if (!string.IsNullOrWhiteSpace(dto.UserName))
                 claims.Add(new Claim("UserName", dto.UserName));
 
-
             claims.Add(new Claim("FullName", dto.FullName));
-
 
             var expireDate = DateTime.UtcNow.AddMinutes(JwtTokenDefaults.Expire);
 
-
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key));
             var signInCredential = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
 
             JwtSecurityToken token = new JwtSecurityToken(
                 issuer: JwtTokenDefaults.ValidIssuer,
@@ -53,9 +45,7 @@ namespace TalentAcademy.Infrastructure.Token
                 signingCredentials: null
                 );
 
-
             JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
-
             return new TokenResponseDto(handler.WriteToken(token), expireDate);
         }
     }
