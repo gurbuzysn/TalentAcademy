@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TalentAcademy.Application.Exceptions;
 using TalentAcademy.Domain.Entities.Identitiy;
 
 namespace TalentAcademy.Application.Features.Queries.Auth
@@ -24,6 +25,10 @@ namespace TalentAcademy.Application.Features.Queries.Auth
         public async Task<CheckUserQueryResponse> Handle(CheckUserQueryRequest request, CancellationToken cancellationToken)
         {
             var user = await _userManager.FindByEmailAsync(request.UserName);
+
+            if (user == null)
+                throw new UserNotFoundException();
+
             var userRole = _userManager.GetRolesAsync(user).Result.FirstOrDefault().ToString();
 
             var checkPassword = await _signInManager.PasswordSignInAsync(user, request.Password, true, true);

@@ -1,6 +1,4 @@
-﻿using TalentAcademy.Domain.Entities.Common;
-
-namespace TalentAcademy.Domain.Entities
+﻿namespace TalentAcademy.Domain.Entities
 {
     public class Topic : BaseEntity
     {

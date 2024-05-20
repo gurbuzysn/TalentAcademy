@@ -13,17 +13,20 @@ namespace TalentAcademy.Persistence.Context
 {
     public static class TalentAcademyDbContextSeedData
     {
-        public static async Task SeedAsync(TalentAcademyDbContext context, UserManager<AppUser> userManager, RoleManager<AppRole> roleManager)
+        public static async Task SeedAsync(TalentAcademyDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             await context.Database.MigrateAsync();
             
-            if (context.Users.Any() && context.Roles.Any())
+            if (await context.Users.AnyAsync() && await context.Roles.AnyAsync())
                 return;
 
+            await roleManager.CreateAsync(new IdentityRole() { Name = AuthorizationConstant.Roles.ADMIN });
+            await roleManager.CreateAsync(new IdentityRole() { Name = AuthorizationConstant.Roles.TRAINER });
+            await roleManager.CreateAsync(new IdentityRole() { Name = AuthorizationConstant.Roles.STUDENT });
 
-            var admin = new AppUser()
+
+            var admin = new Admin()
             {
-                Id = Guid.NewGuid(),
                 FirstName = AuthorizationConstant.ADMIN_FIRSTNAME,
                 LastName = AuthorizationConstant.ADMIN_LASTNAME,
                 UserName = AuthorizationConstant.ADMIN_USERNAME,
@@ -32,13 +35,53 @@ namespace TalentAcademy.Persistence.Context
                 NormalizedEmail = AuthorizationConstant.ADMIN_USERNAME.ToUpper(),
                 Gender = Gender.Erkek,
                 DateOfBirth = new DateTime(1993, 02, 25),
-                CreatedDate = DateTime.UtcNow
+                CreatedDate = DateTime.UtcNow,
+                PhoneNumber = AuthorizationConstant.ADMIN_PHONE
             };
-            await userManager.CreateAsync(admin, AuthorizationConstant.ADMIN_PASSWORD);
 
-            var student = new AppUser()
+            await userManager.CreateAsync(admin,AuthorizationConstant.ADMIN_PASSWORD);
+            await userManager.AddToRoleAsync(admin, AuthorizationConstant.Roles.ADMIN);
+
+            var trainer = new Trainer()
             {
-                Id = Guid.NewGuid(),
+                FirstName = AuthorizationConstant.ADMIN_FIRSTNAME,
+                LastName = AuthorizationConstant.ADMIN_LASTNAME,
+                UserName = AuthorizationConstant.ADMIN_USERNAME,
+                NormalizedUserName = AuthorizationConstant.ADMIN_USERNAME.ToUpper(),
+                Email = AuthorizationConstant.ADMIN_USERNAME,
+                NormalizedEmail = AuthorizationConstant.ADMIN_USERNAME.ToUpper(),
+                Gender = Gender.Erkek,
+                DateOfBirth = new DateTime(1993, 02, 25),
+                CreatedDate = DateTime.UtcNow,
+                PhoneNumber = AuthorizationConstant.ADMIN_PHONE
+            };
+
+            await userManager.CreateAsync(admin, AuthorizationConstant.ADMIN_PASSWORD);
+            await userManager.AddToRoleAsync(admin, AuthorizationConstant.Roles.ADMIN);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            var student = new Student()
+            {
                 FirstName = AuthorizationConstant.STUDENT_FIRSTNAME,
                 LastName = AuthorizationConstant.STUDENT_LASTNAME,
                 UserName = AuthorizationConstant.STUDENT_USERNAME,
@@ -47,8 +90,10 @@ namespace TalentAcademy.Persistence.Context
                 NormalizedEmail = AuthorizationConstant.STUDENT_USERNAME.ToUpper(),
                 Gender = Gender.Erkek,
                 DateOfBirth = new DateTime(2022, 08, 22),
-                CreatedDate = DateTime.UtcNow
+                CreatedDate = DateTime.UtcNow,
+                PhoneNumber = AuthorizationConstant.STUDENT_PHONE
             };
+
             await userManager.CreateAsync(student, AuthorizationConstant.STUDENT_PASSWORD);
 
             await roleManager.CreateAsync(new AppRole()

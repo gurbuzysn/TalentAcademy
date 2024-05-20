@@ -1,4 +1,4 @@
-﻿namespace TalentAcademy.Domain.Entities.Common
+﻿namespace TalentAcademy.Domain.Entities
 {
     public class BaseEntity
     {

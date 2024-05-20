@@ -63,10 +63,10 @@ namespace TalentAcademy.MVC.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı");
+                    //ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı");
                 }
             }
-            _notyf.Error("Kullanıcı adı veya şifre hatalı. Lütfen tekrar deneyiniz.", 5);
+            //_notyf.Error("Kullanıcı adı veya şifre hatalı. Lütfen tekrar deneyiniz.", 5);
             return View(model);
         }
 
