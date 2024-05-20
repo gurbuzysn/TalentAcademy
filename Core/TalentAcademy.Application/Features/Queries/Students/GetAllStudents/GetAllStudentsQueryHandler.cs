@@ -13,10 +13,10 @@ namespace TalentAcademy.Application.Features.Queries.Students.GetAllStudents
 {
     public class GetAllStudentsQueryHandler : IRequestHandler<GetAllStudentsQueryRequest, List<GetAllStudentsQueryResponse>>
     {
-        private readonly UserManager<AppUser> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly IMapper _mapper;
 
-        public GetAllStudentsQueryHandler(UserManager<AppUser> userManager, IMapper mapper)
+        public GetAllStudentsQueryHandler(UserManager<IdentityUser> userManager, IMapper mapper)
         {
             _userManager = userManager;
             _mapper = mapper;

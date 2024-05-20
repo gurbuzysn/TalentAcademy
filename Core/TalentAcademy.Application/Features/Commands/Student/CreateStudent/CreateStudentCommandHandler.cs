@@ -12,9 +12,9 @@ namespace TalentAcademy.Application.Features.Commands.Student.CreateStudent
 {
     public class CreateStudentCommandHandler : IRequestHandler<CreateStudentCommandRequest>
     {
-        private readonly UserManager<AppUser> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public CreateStudentCommandHandler(UserManager<AppUser> userManager)
+        public CreateStudentCommandHandler(UserManager<IdentityUser> userManager)
         {
             _userManager = userManager;
         }

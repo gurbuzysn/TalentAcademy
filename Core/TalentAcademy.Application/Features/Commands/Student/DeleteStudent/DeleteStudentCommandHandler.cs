@@ -11,9 +11,9 @@ namespace TalentAcademy.Application.Features.Commands.Student.DeleteStudent
 {
     public class DeleteStudentCommandHandler : IRequestHandler<DeleteStudentCommandRequest>
     {
-        private readonly UserManager<AppUser> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public DeleteStudentCommandHandler(UserManager<AppUser> userManager)
+        public DeleteStudentCommandHandler(UserManager<IdentityUser> userManager)
         {
             _userManager = userManager;
         }

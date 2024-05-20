@@ -73,7 +73,7 @@ namespace TalentAcademy.MVC.Controllers
         [HttpGet]
         public async Task<IActionResult> LogOut()
         {
-            HttpContext.SignOutAsync();
+            await HttpContext.SignOutAsync();
             return RedirectToAction("Login");
         }
     }

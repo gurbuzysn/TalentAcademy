@@ -22,11 +22,12 @@ namespace TalentAcademy.Application.Features.Queries.Users.GetUserById
         }
         public async Task<GetUserByIdQueryResponse> Handle(GetUserByIdQueryRequest request, CancellationToken cancellationToken)
         {
-            var user = await _readRepository.GetByFilterAsync(x => x.Id == request.Id);
+            //var user = await _readRepository.GetByFilterAsync(x => x.Id == request.Id);
 
-            var userResponse = _mapper.Map<GetUserByIdQueryResponse>(user);
+            //var userResponse = _mapper.Map<GetUserByIdQueryResponse>(user);
 
-            return userResponse;
+            //return userResponse;
+            throw new NotImplementedException();
         }
     }
 }
