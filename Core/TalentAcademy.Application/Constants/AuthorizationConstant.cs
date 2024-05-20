@@ -14,6 +14,12 @@ namespace TalentAcademy.Application.Constants
         public const string ADMIN_PASSWORD = "Admin123*";
         public const string ADMIN_PHONE = "5389452293";
 
+        public const string TRAINER_FIRSTNAME = "Mustafa";
+        public const string TRAINER_LASTNAME = "Demir";
+        public const string TRAINER_USERNAME = "mustafa.demir@talentacademy.com";
+        public const string TRAINER_PASSWORD = "Trainer123*";
+        public const string TRAINER_PHONE = "5554443322";
+
         public const string STUDENT_FIRSTNAME = "Kerem";
         public const string STUDENT_LASTNAME = "Gürbüz";
         public const string STUDENT_USERNAME = "kerem.gurbuz@talentacademy.com";

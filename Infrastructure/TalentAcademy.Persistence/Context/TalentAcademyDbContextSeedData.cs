@@ -24,7 +24,6 @@ namespace TalentAcademy.Persistence.Context
             await roleManager.CreateAsync(new IdentityRole() { Name = AuthorizationConstant.Roles.TRAINER });
             await roleManager.CreateAsync(new IdentityRole() { Name = AuthorizationConstant.Roles.STUDENT });
 
-
             var admin = new Admin()
             {
                 FirstName = AuthorizationConstant.ADMIN_FIRSTNAME,
@@ -44,42 +43,22 @@ namespace TalentAcademy.Persistence.Context
 
             var trainer = new Trainer()
             {
-                FirstName = AuthorizationConstant.ADMIN_FIRSTNAME,
-                LastName = AuthorizationConstant.ADMIN_LASTNAME,
-                UserName = AuthorizationConstant.ADMIN_USERNAME,
-                NormalizedUserName = AuthorizationConstant.ADMIN_USERNAME.ToUpper(),
-                Email = AuthorizationConstant.ADMIN_USERNAME,
-                NormalizedEmail = AuthorizationConstant.ADMIN_USERNAME.ToUpper(),
+                FirstName = AuthorizationConstant.TRAINER_FIRSTNAME,
+                LastName = AuthorizationConstant.TRAINER_LASTNAME,
+                UserName = AuthorizationConstant.TRAINER_USERNAME,
+                NormalizedUserName = AuthorizationConstant.TRAINER_USERNAME.ToUpper(),
+                Email = AuthorizationConstant.TRAINER_USERNAME,
+                NormalizedEmail = AuthorizationConstant.TRAINER_USERNAME.ToUpper(),
                 Gender = Gender.Erkek,
-                DateOfBirth = new DateTime(1993, 02, 25),
+                DateOfBirth = new DateTime(1973, 04, 10),
                 CreatedDate = DateTime.UtcNow,
-                PhoneNumber = AuthorizationConstant.ADMIN_PHONE
+                PhoneNumber = AuthorizationConstant.TRAINER_PHONE
             };
 
-            await userManager.CreateAsync(admin, AuthorizationConstant.ADMIN_PASSWORD);
-            await userManager.AddToRoleAsync(admin, AuthorizationConstant.Roles.ADMIN);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            await userManager.CreateAsync(trainer, AuthorizationConstant.TRAINER_PASSWORD);
+            await userManager.AddToRoleAsync(trainer, AuthorizationConstant.Roles.TRAINER);
+            
+            
             var student = new Student()
             {
                 FirstName = AuthorizationConstant.STUDENT_FIRSTNAME,
@@ -95,22 +74,6 @@ namespace TalentAcademy.Persistence.Context
             };
 
             await userManager.CreateAsync(student, AuthorizationConstant.STUDENT_PASSWORD);
-
-            await roleManager.CreateAsync(new AppRole()
-            {
-                Id = Guid.NewGuid(),
-                Name = AuthorizationConstant.Roles.ADMINISTRATOR,
-                NormalizedName = AuthorizationConstant.Roles.ADMINISTRATOR.ToUpper()
-            });
-
-            await roleManager.CreateAsync(new AppRole()
-            {
-                Id = Guid.NewGuid(),
-                Name = AuthorizationConstant.Roles.STUDENT,
-                NormalizedName = AuthorizationConstant.Roles.STUDENT.ToUpper()
-            });
-
-            await userManager.AddToRoleAsync(admin, AuthorizationConstant.Roles.ADMINISTRATOR);
             await userManager.AddToRoleAsync(student, AuthorizationConstant.Roles.STUDENT);
         }
     }
