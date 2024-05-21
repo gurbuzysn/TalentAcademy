@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using TalentAcademy.Application.Features.Queries.Auth;
 using TalentAcademy.Domain.Entities.Identitiy;
 using TalentAcademy.Infrastructure.Token;
@@ -33,6 +34,12 @@ namespace TalentAcademy.WebAPI.Controllers
         [HttpPost("[action]")]
         public async Task<IActionResult> Login(CheckUserQueryRequest request)
         {
+            if (!ModelState.IsValid)
+            {
+                //Hatalı giriş Loglama işlemleri yapılacak
+                // Kullanıcı adı veya şifte hatalı uyarısı verilecek
+                //geçerli bir email değilse onun uyarısı verilecek
+            }
             var dto = await _mediator.Send(request);
 
             if (dto.IsExist)

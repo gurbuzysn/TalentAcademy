@@ -1,8 +1,10 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using TalentAcademy.Application;
+using TalentAcademy.Application.Validators.Auth;
 using TalentAcademy.Domain.Entities.Identitiy;
 using TalentAcademy.Infrastructure.Token;
 using TalentAcademy.Persistence;
@@ -32,7 +34,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 builder.Services.AddControllers().AddNewtonsoftJson(opt =>
 {
     opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-});
+})
+.AddFluentValidation(config => config.RegisterValidatorsFromAssemblyContaining<CheckUserQueryRequestValidator>());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -52,7 +55,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-using ( var scope = app.Services.CreateScope())
+using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<TalentAcademyDbContext>();
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
@@ -61,4 +64,4 @@ using ( var scope = app.Services.CreateScope())
     await TalentAcademyDbContextSeedData.SeedAsync(context, userManager, roleManager);
 }
 
-    app.Run();
+app.Run();
