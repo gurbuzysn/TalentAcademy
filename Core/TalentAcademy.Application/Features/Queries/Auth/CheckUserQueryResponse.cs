@@ -7,5 +7,6 @@
         public string FullName { get; set; } = null!;
         public string Role { get; set; } = null!;
         public bool IsExist { get; set; }
+        public string? ErrorMessage { get; set; }
     }
 }

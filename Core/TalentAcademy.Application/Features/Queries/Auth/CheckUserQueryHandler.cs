@@ -26,32 +26,36 @@ namespace TalentAcademy.Application.Features.Queries.Auth
 
         public async Task<CheckUserQueryResponse> Handle(CheckUserQueryRequest request, CancellationToken cancellationToken)
         {
-            //var user = await _userManager.FindByEmailAsync(request.UserName);
+            var user = await _userManager.FindByEmailAsync(request.UserName);
+            var queryResponse = new CheckUserQueryResponse();
 
-            //if (user == null)
-            //    throw new UserNotFoundException();
+            if (user == null)
+            {
+                queryResponse.IsExist = false;
+                queryResponse.ErrorMessage = "Kullanıcı adı veya parola hatalı. Lütfen tekrar deneyiniz";
+            }
 
-            //var userRole = _userManager.GetRolesAsync(user).Result.FirstOrDefault().ToString();
+            var userRole = _userManager.GetRolesAsync(user!).Result.FirstOrDefault();
+            if (userRole == null)
+                throw new Exception("Role Bulunmadı");
 
-            //var checkPassword = await _signInManager.PasswordSignInAsync(user, request.Password, true, true);
+            var checkPassword = await _signInManager.PasswordSignInAsync(user!, request.Password, true, true);
 
-            //var queryResponse = new CheckUserQueryResponse();
+            if (!checkPassword.Succeeded)
+            {
+                queryResponse.IsExist = false;
+                queryResponse.ErrorMessage = "Kullanıcı adı veya parola hatalı. Lütfen tekrar deneyiniz";
+            }
+            else
+            {
+                queryResponse.Id = Guid.Parse(user!.Id);
+                queryResponse.UserName = user.UserName!;
+                queryResponse.FullName = "Abc";
+                queryResponse.IsExist = true;
+                queryResponse.Role = userRole!;
+            }
+            return queryResponse;
 
-            //if (!checkPassword.Succeeded)
-            //{
-            //    queryResponse.IsExist = false;
-            //}
-            //else
-            //{
-            //    queryResponse.Id = user.Id;
-            //    queryResponse.UserName = user.UserName;
-            //    queryResponse.FullName = user.FullName;
-            //    queryResponse.IsExist = true;
-            //    queryResponse.Role = userRole;
-            //}
-            //return queryResponse;
-
-            throw new NotImplementedException();
 
         }
     }
