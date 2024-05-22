@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using TalentAcademy.MVC.Areas.Admin.Models.Student;
+using TalentAcademy.MVC.Enums;
 
 namespace TalentAcademy.MVC.Areas.Admin.Controllers
 {
@@ -26,8 +28,14 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
 
         public async Task<IActionResult> List()
         {
-            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.ToString();
+            ViewBag.GenderList = Enum.GetValues(typeof(Gender)).Cast<Gender>().Select(e => new SelectListItem
+            {
+                Value = e.ToString(),
+                Text = e.ToString()
+            }).ToList();
 
+
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.ToString();
             if (token != null)
             {
                 var client = _httpClientFactory.CreateClient();
@@ -48,6 +56,7 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+           
             return View();
         }
 
