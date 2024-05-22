@@ -10,6 +10,6 @@ namespace TalentAcademy.Application.Features.Commands.Students.CreateStudent
         public string LastName { get; set; } = null!;
         public Gender Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public IFormFile? Image { get; set; }
+        //public IFormFile? Image { get; set; }
     }
 }

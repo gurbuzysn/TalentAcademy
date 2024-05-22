@@ -49,12 +49,6 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
             return View();
         }
 
-        //[HttpGet]
-        //public IActionResult Create()
-        //{
-        //    return View();
-        //}
-
         [HttpPost]
         public async Task<IActionResult> Create(StudentCreateModel model)
         {
@@ -67,23 +61,20 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
             {
                 var client = _httpClientFactory.CreateClient();
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                var jsonData = JsonSerializer.Serialize(model);
-                var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                var content = new StringContent(JsonSerializer.Serialize(model), Encoding.UTF8, "application/json");
 
 
 
 
 
 
+                var response = await client.PostAsync("https://localhost:7043/api/Students", content);
                 var updateResponse = await client.PutAsync("https://localhost:7043/api/Students",content);
                 var deleteResponse = await client.DeleteAsync("https://localhost:7043/api/Students");
 
 
-                var response = await client.PostAsync("https://localhost:7043/api/Students",content);
 
-
-
-
+                
 
 
 

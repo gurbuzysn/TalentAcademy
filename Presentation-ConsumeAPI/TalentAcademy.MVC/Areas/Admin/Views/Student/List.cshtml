@@ -9,12 +9,14 @@
                         <h5 class="card-title">Öğrenci Listesi</h5>
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#basicModal">Öğrenci Ekle</button>
                     </div>
-                    <table class="table datatable table-hover table-bordered text-center">
+                    <table class="table datatable table-hover">
                         <thead class="d-flex justify-content-center">
                             <tr>
-                                <th>
+                               @*  <th>
                                     <b>İ</b>sim
-                                </th>
+                                </th> *@
+                                <th></th>
+                                <th>İsim</th>
                                 <th>Soyisim</th>
                                 <th>Cinsiyet</th>
                                 <th data-type="date" data-format="YYYY/DD/MM">Doğum Tarihi</th>
@@ -27,6 +29,7 @@
                                 foreach (var student in Model)
                                 {
                                     <tr>
+                                        <td>@student.</td>
                                         <td>@student.FirstName</td>
                                         <td>@student.LastName</td>
                                         <td>@student.Gender</td>
