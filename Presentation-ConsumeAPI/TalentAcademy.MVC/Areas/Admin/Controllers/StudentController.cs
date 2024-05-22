@@ -56,7 +56,6 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-           
             return View();
         }
 

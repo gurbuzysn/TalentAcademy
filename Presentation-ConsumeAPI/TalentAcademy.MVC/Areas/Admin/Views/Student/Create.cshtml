@@ -19,19 +19,10 @@
                             </div>
                             <div class="d-flex justify-content-between ps-2">
                                 <div class="col-md-6">
-
-
-
-
                                     <select asp-for="@Model.Gender" asp-items="@ViewBag.GenderList" id="inputState" class="form-select form-select-solid">
                                         <option selected disabled>Cinsiyet</option>
                                     </select>
                                     <span asp-validation-for="@Model.Gender"></span>
-
-
-
-
-
                                 </div>
                                 <div class="col-md-6">
                                     <input asp-for="@Model.DateOfBirth" type="date" class="form-control" asp-format="{0:dd/MM/yyyy}">
