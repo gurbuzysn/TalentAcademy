@@ -14,6 +14,12 @@ namespace TalentAcademy.Application.Features.Commands.Students.CreateStudent
         }
         public async Task Handle(CreateStudentCommandRequest request, CancellationToken cancellationToken)
         {
+            // Tüm işi burada yapacağız
+            // 1-) Öğrenciyi normal bir şekilde kaydedeceğiz. ancak bir farkla. fotografını veri tabanına göndermek yerine bir guid oluşturup onu veri tabanına kaydeceğiz. fotografı ise adı  aynı guidin sonuna uzantısını ekleyerek olşturduğumz isim ile wwwroot a kaydedeceğiz. 
+
+
+
+
             var userName = $"{request.FirstName.ToLower()}.{request.LastName.ToLower()}@talentacademy.com";
             var newStudent = new Student()
             {

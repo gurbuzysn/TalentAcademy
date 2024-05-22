@@ -16,6 +16,9 @@ namespace TalentAcademy.Application.Features.Queries.Students.GetAllStudents
         }
         public async Task<List<GetAllStudentsQueryResponse>> Handle(GetAllStudentsQueryRequest request, CancellationToken cancellationToken)
         {
+            // Gelen Student i veri tabanına kaydet
+            // Fotografın kendisini wwwroot/a
+
             var allStudents = await _userManager.GetUsersInRoleAsync("Student");
             var allStudentsDto = _mapper.Map<List<GetAllStudentsQueryResponse>>(allStudents);
             return allStudentsDto;

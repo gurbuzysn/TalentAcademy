@@ -61,32 +61,54 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
             {
                 var client = _httpClientFactory.CreateClient();
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                var content = new StringContent(JsonSerializer.Serialize(model), Encoding.UTF8, "application/json");
 
 
 
 
 
 
-                var response = await client.PostAsync("https://localhost:7043/api/Students", content);
-                var updateResponse = await client.PutAsync("https://localhost:7043/api/Students",content);
-                var deleteResponse = await client.DeleteAsync("https://localhost:7043/api/Students");
+                //var content = new StringContent(JsonSerializer.Serialize(model), Encoding.UTF8, "application/json");
 
 
-
-                
-
-
-
-
-                if (response.IsSuccessStatusCode)
+                using (var content = new MultipartFormDataContent())
                 {
-                    return RedirectToAction("List");
+                    content.Add(new StringContent(model.FirstName), "FirstName");
+                    content.Add(new StringContent(model.LastName), "LastName");
+                    content.Add(new StringContent(model.Gender.ToString()), "Gender");
+                    content.Add(new StringContent(model.DateOfBirth.ToString("o")), "DateOfBirth");
+
+                    if (model.Image != null)
+                    {
+                        var fileContent = new StreamContent(model.Image.OpenReadStream());
+                        fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(model.Image.ContentType);
+                        content.Add(fileContent, "Image", model.Image.FileName);
+                    }
+
+                    try
+                    {
+                        var response = await client.PostAsync("https://localhost:7043/api/Students", content);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return RedirectToAction("List");
+                        }
+                        ModelState.AddModelError("", "Bir hata oluştu");
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("", $"Bir hata oluştu: {ex.Message}");
+                    }
                 }
-                ModelState.AddModelError("", "Bir hata oluştu");
             }
-            return RedirectToAction("List");
+
+            return View(model);
         }
+
+
+
+
+
+
         public async Task<IActionResult> Delete(Guid id)
         {
             if (!ModelState.IsValid)

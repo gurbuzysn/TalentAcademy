@@ -24,17 +24,7 @@ namespace TalentAcademy.WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpPut]
-        public IActionResult Update(CreateStudentCommandRequest request)
-        {
-            return Ok();
-        }
-
-        [HttpDelete]
-        public IActionResult Delete()
-        {
-            return Ok();
-        }
+     
 
         [HttpPost]
         public async Task<IActionResult> Create(CreateStudentCommandRequest request)
