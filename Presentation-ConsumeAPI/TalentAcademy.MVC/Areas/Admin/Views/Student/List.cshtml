@@ -22,18 +22,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var student in Model)
+                            @if(Model != null)
                             {
-                                <tr>
-                                    <td>@student.FirstName</td>
-                                    <td>@student.LastName</td>
-                                    <td>@student.Gender</td>
-                                    <td>@student.DateOfBirth.ToShortDateString()</td>
-                                    <td>
-                                        <a asp-controller="Student" asp-action="Update" class="btn btn-warning">Düzenle</a>
-                                        <a asp-controller="Student" asp-action="Delete" class="btn btn-danger">Sil</a>
-                                    </td>
-                                </tr>
+                                foreach (var student in Model)
+                                {
+                                    <tr>
+                                        <td>@student.FirstName</td>
+                                        <td>@student.LastName</td>
+                                        <td>@student.Gender</td>
+                                        <td>@student.DateOfBirth.ToShortDateString()</td>
+                                        <td>
+                                            <a asp-controller="Student" asp-action="Update" class="btn btn-warning">Düzenle</a>
+                                            <a asp-controller="Student" asp-action="Delete" class="btn btn-danger">Sil</a>
+                                        </td>
+                                    </tr>
+                                }
                             }
                         </tbody>
                     </table>

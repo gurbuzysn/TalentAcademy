@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using TalentAcademy.Application.Features.Queries.Students.GetAllStudents;
 using TalentAcademy.Domain.Entities.Identitiy;
 
@@ -8,7 +9,9 @@ namespace TalentAcademy.Application.MappingProfile
     {
         public StudentProfile()
         {
-            CreateMap<AppUser, GetAllStudentsQueryResponse>();
+            //CreateMap<IdentityUser, GetAllStudentsQueryResponse>();
+            //CreateMap<AppUser, GetAllStudentsQueryResponse>();
+            CreateMap<Student, GetAllStudentsQueryResponse>();
         }
     }
 }

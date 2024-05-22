@@ -67,33 +67,40 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
             {
                 var client = _httpClientFactory.CreateClient();
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-
-
                 var jsonData = JsonSerializer.Serialize(model);
                 var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-                var response = await client.PostAsync("https://localhost:7043/api/Students", content);
+
+
+
+
+
+                var updateResponse = await client.PutAsync("https://localhost:7043/api/Students",content);
+                var deleteResponse = await client.DeleteAsync("https://localhost:7043/api/Students");
+
+
+                var response = await client.PostAsync("https://localhost:7043/api/Students",content);
+
+
+
+
+
+
+
 
                 if (response.IsSuccessStatusCode)
                 {
                     return RedirectToAction("List");
                 }
-
                 ModelState.AddModelError("", "Bir hata oluştu");
             }
             return RedirectToAction("List");
         }
-
-
         public async Task<IActionResult> Delete(Guid id)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-
             var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.ToString();
-
-
-
             var client = _httpClientFactory.CreateClient();
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
@@ -101,17 +108,12 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
             var response = await client.DeleteAsync($"https://localhost:7043/api/Students/{id}");
-
-
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("List");
             }
-
             ModelState.AddModelError("", "Bir hata oluştu");
-
             return RedirectToAction("List");
-
         }
 
     }
