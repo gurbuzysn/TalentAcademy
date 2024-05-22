@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace TalentAcademy.WebAPI.Controllers
 {
@@ -9,7 +8,7 @@ namespace TalentAcademy.WebAPI.Controllers
     {
         public AdminController()
         {
-            
+
         }
         //[HttpGet]
         //public async Task<IActionResult> AdminDashboard()

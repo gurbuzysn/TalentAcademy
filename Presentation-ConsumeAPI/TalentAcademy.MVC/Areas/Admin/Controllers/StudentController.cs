@@ -1,10 +1,7 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using TalentAcademy.MVC.Areas.Admin.Models.Student;
@@ -87,10 +84,10 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
             return RedirectToAction("List");
         }
 
-        
+
         public async Task<IActionResult> Delete(Guid id)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.ToString();

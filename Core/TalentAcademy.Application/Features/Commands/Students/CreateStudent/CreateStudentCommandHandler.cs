@@ -1,14 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TalentAcademy.Application.Constants;
 using TalentAcademy.Domain.Entities.Identitiy;
 
-namespace TalentAcademy.Application.Features.Commands.Student.CreateStudent
+namespace TalentAcademy.Application.Features.Commands.Students.CreateStudent
 {
     public class CreateStudentCommandHandler : IRequestHandler<CreateStudentCommandRequest>
     {
@@ -21,7 +15,7 @@ namespace TalentAcademy.Application.Features.Commands.Student.CreateStudent
         public async Task Handle(CreateStudentCommandRequest request, CancellationToken cancellationToken)
         {
             var userName = $"{request.FirstName.ToLower()}.{request.LastName.ToLower()}@talentacademy.com";
-            var newStudent = new AppUser()
+            var newStudent = new Student()
             {
                 FirstName = request.FirstName,
                 LastName = request.LastName,

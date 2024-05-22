@@ -1,6 +1,4 @@
-﻿using TalentAcademy.MVC.Enums;
-
-namespace TalentAcademy.MVC.Areas.Admin.Models
+﻿namespace TalentAcademy.MVC.Areas.Admin.Models
 {
     public class UserInfoModel
     {

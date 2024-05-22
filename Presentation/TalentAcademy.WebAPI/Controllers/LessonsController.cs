@@ -51,7 +51,7 @@ namespace TalentAcademy.WebAPI.Controllers
         public async Task<IActionResult> Delete(Guid id)
         {
             await _mediator.Send(new DeleteLessonCommandRequest(id));
-            return NoContent() ;
+            return NoContent();
         }
     }
 }

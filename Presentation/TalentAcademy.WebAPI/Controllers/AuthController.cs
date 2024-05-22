@@ -1,9 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using TalentAcademy.Application.Features.Queries.Auth;
-using TalentAcademy.Domain.Entities.Identitiy;
 using TalentAcademy.Infrastructure.Token;
 
 namespace TalentAcademy.WebAPI.Controllers

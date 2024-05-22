@@ -5,7 +5,6 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using TalentAcademy.Application;
 using TalentAcademy.Application.Validators.Auth;
-using TalentAcademy.Domain.Entities.Identitiy;
 using TalentAcademy.Infrastructure.Token;
 using TalentAcademy.Persistence;
 using TalentAcademy.Persistence.Context;

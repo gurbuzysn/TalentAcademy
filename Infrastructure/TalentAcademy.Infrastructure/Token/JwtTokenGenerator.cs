@@ -1,12 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 using TalentAcademy.Application.Dtos;
 using TalentAcademy.Application.Features.Queries.Auth;
 

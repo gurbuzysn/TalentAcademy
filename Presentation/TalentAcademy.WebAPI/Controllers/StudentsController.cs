@@ -1,8 +1,7 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TalentAcademy.Application.Features.Commands.Student.CreateStudent;
-using TalentAcademy.Application.Features.Commands.Student.DeleteStudent;
+using TalentAcademy.Application.Features.Commands.Students.CreateStudent;
+using TalentAcademy.Application.Features.Commands.Students.DeleteStudent;
 using TalentAcademy.Application.Features.Queries.Students.GetAllStudents;
 
 namespace TalentAcademy.WebAPI.Controllers

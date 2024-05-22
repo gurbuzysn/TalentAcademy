@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Runtime.Serialization.Json;
 using System.Text.Json;
 using TalentAcademy.Application.Features.Queries.Users.GetUserById;
 
@@ -32,7 +29,7 @@ namespace TalentAcademy.WebAPI.Controllers
             var jsonData = JsonSerializer.Serialize(result);
 
             return Ok(jsonData);
-            
+
         }
     }
 }

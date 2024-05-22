@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <div class="card">
                     <div class="card-body">
-                        <form class="row g-3 my-3" method="post">
+                        <form class="row g-3 my-3" method="post" enctype="multipart/form-data">
                             <div class="col-md-12">
                                 <input asp-for="@Model.FirstName" type="text" class="form-control" placeholder="İsim">
                             </div>
@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 mb-3">
-                                <input class="form-control" type="file" id="formFile" />
+                                <input asp-for="@Model.Image" class="form-control" type="file" id="formFile" />
                             </div>
                             <div class="text-center">
                                 <button type="reset" class="btn btn-secondary">Sıfırla</button>

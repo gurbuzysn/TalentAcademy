@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TalentAcademy.Application.Constants
+﻿namespace TalentAcademy.Application.Constants
 {
     public static class AuthorizationConstant
     {

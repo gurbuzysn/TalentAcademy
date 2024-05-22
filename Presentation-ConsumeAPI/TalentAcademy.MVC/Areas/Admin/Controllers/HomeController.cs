@@ -1,13 +1,10 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NuGet.Common;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 using TalentAcademy.MVC.Areas.Admin.Models;
 using TalentAcademy.MVC.Areas.Admin.Models.Admin;
-using TalentAcademy.MVC.Areas.Admin.Models.Student;
 
 namespace TalentAcademy.MVC.Areas.Admin.Controllers
 {
@@ -39,7 +36,7 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
             var content = new StringContent(JsonSerializer.Serialize(userId), Encoding.UTF8, "application/json");
             var response = await client.PostAsync("https://localhost:7043/api/User", content);
 
-            if(response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
                 var jsonData = await response.Content.ReadAsStringAsync();
                 var result = JsonSerializer.Deserialize<UserInfoModel>(jsonData);

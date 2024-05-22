@@ -1,10 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TalentAcademy.Application.Constants;
 using TalentAcademy.Domain.Entities.Identitiy;
 using TalentAcademy.Domain.Enums;
@@ -16,7 +11,7 @@ namespace TalentAcademy.Persistence.Context
         public static async Task SeedAsync(TalentAcademyDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             await context.Database.MigrateAsync();
-            
+
             if (await context.Users.AnyAsync() && await context.Roles.AnyAsync())
                 return;
 
@@ -38,7 +33,7 @@ namespace TalentAcademy.Persistence.Context
                 PhoneNumber = AuthorizationConstant.ADMIN_PHONE
             };
 
-            await userManager.CreateAsync(admin,AuthorizationConstant.ADMIN_PASSWORD);
+            await userManager.CreateAsync(admin, AuthorizationConstant.ADMIN_PASSWORD);
             await userManager.AddToRoleAsync(admin, AuthorizationConstant.Roles.ADMIN);
 
             var trainer = new Trainer()
@@ -57,8 +52,8 @@ namespace TalentAcademy.Persistence.Context
 
             await userManager.CreateAsync(trainer, AuthorizationConstant.TRAINER_PASSWORD);
             await userManager.AddToRoleAsync(trainer, AuthorizationConstant.Roles.TRAINER);
-            
-            
+
+
             var student = new Student()
             {
                 FirstName = AuthorizationConstant.STUDENT_FIRSTNAME,

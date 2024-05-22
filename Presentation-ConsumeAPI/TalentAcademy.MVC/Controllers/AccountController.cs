@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 using TalentAcademy.MVC.Models;
-using Microsoft.AspNetCore.Identity;
-using AspNetCoreHero.ToastNotification.Abstractions;
 
 namespace TalentAcademy.MVC.Controllers
 {
