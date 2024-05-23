@@ -86,7 +86,7 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
 
                         if (response.IsSuccessStatusCode)
                         {
-                            TempData["Message"] = result.Message;
+                            TempData["createMessage"] = result!.Message;
                             return RedirectToAction("List");
                         }
                         ModelState.AddModelError("", "Bir hata oluştu");

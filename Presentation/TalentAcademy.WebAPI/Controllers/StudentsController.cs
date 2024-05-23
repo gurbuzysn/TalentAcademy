@@ -36,8 +36,8 @@ namespace TalentAcademy.WebAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            await _mediator.Send(new DeleteStudentCommandRequest(id));
-            return NoContent();
+            var response = await _mediator.Send(new DeleteStudentCommandRequest(id));
+            return Ok(response);
         }
 
 

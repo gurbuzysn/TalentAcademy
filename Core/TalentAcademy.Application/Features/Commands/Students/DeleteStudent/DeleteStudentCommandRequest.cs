@@ -2,7 +2,7 @@
 
 namespace TalentAcademy.Application.Features.Commands.Students.DeleteStudent
 {
-    public class DeleteStudentCommandRequest : IRequest
+    public class DeleteStudentCommandRequest : IRequest<GeneralResponse>
     {
         public Guid Id { get; set; }
 

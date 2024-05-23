@@ -59,18 +59,30 @@
 
 <partial name="~/Areas/Admin/Views/Student/Create.cshtml" model="new StudentCreateModel()"></partial>
 
-
 @section Scripts{
     <script>
         $(document).ready(function () {
-            var message = '@TempData["AlertMessage"]'
-            if (message) {
+            var createMessage = '@TempData["CreateMessage"]'
+            if (createMessage) {
                 Swal.fire({
-                    icon: 'Success',
-                    title: message,
+                    icon: 'success',
+                    text: message,
                     timer: 2000
                 })
             }
+
+            var deleteMessage = '@TempData["DeleteMessage"]'
+            if (deleteMessage) {
+                Swal.fire({
+                    icon: 'success',
+                    text: message,
+                    timer: 2000
+                })
+            }
+
         })
     </script>
 }
+
+   
+
