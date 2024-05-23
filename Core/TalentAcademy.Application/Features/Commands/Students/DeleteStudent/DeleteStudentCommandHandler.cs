@@ -14,8 +14,9 @@ namespace TalentAcademy.Application.Features.Commands.Students.DeleteStudent
         public async Task Handle(DeleteStudentCommandRequest request, CancellationToken cancellationToken)
         {
             var deletedStudent = await _userManager.FindByIdAsync(request.Id.ToString());
-
             var result = await _userManager.DeleteAsync(deletedStudent!);
+
+            return;
         }
     }
 }

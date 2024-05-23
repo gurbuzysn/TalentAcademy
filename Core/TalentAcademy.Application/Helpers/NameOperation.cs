@@ -10,27 +10,21 @@ namespace TalentAcademy.Application.Helpers
     {
         public static string CharacterRegulatory(string text)
             => text.Replace("ı", "i")
-                   .Replace("I", "i")
-                   .Replace("İ", "i")
+                   .Replace("İ", "I")
 
                    .Replace("ö", "o")
-                   .Replace("Ö", "o")
-                   .Replace("O", "o")
+                   .Replace("Ö", "O")
 
                    .Replace("ü", "u")
-                   .Replace("Ü", "u")
-                   .Replace("U", "u")
+                   .Replace("Ü", "U")
 
                    .Replace("ğ", "g")
-                   .Replace("Ğ", "g")
-                   .Replace("G", "g")
+                   .Replace("Ğ", "G")
 
                    .Replace("ş", "s")
-                   .Replace("Ş", "s")
-                   .Replace("S", "s")
+                   .Replace("Ş", "S")
 
                    .Replace("ç", "c")
-                   .Replace("Ç", "c")
-                   .Replace("C", "c");
+                   .Replace("Ç", "C");
     }
 }

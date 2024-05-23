@@ -29,8 +29,8 @@ namespace TalentAcademy.WebAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateStudentCommandRequest request)
         {
-            await _mediator.Send(request);
-            return Created();
+            var result = await _mediator.Send(request);
+            return Created("", result);
         }
 
         [HttpDelete("{id}")]

@@ -12,9 +12,6 @@
                     <table class="table datatable table-hover">
                         <thead class="d-flex justify-content-center">
                             <tr>
-                               @*  <th>
-                                    <b>İ</b>sim
-                                </th> *@
                                 <th></th>
                                 <th>İsim</th>
                                 <th>Soyisim</th>
@@ -24,23 +21,34 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if(Model != null)
-                            {
-                                foreach (var student in Model)
+                                @if (Model != null)
                                 {
-                                    <tr>
-                                        <td>@student.</td>
+                                    foreach (var student in Model)
+                                    {
+                                    <tr class="">
+                                            @if (!string.IsNullOrEmpty(student.ImageUri))
+                                            {
+                                            <td class="d-flex justify-content-center align-items-center">
+                                                <img class="rounded-circle" src="@student.ImageUri" alt="Student Image" width="50" height="50" />
+                                            </td>
+                                            }
+                                            else
+                                            {
+                                            <td class="d-flex justify-content-center align-items-center">
+                                                <img class="rounded-circle" src="https://localhost:7043/images/blank-profile-photo.jpg" alt="No Photo" width="50" height="50" />
+                                            </td>
+                                            }
                                         <td>@student.FirstName</td>
                                         <td>@student.LastName</td>
                                         <td>@student.Gender</td>
                                         <td>@student.DateOfBirth.ToShortDateString()</td>
                                         <td>
-                                            <a asp-controller="Student" asp-action="Update" class="btn btn-warning">Düzenle</a>
-                                            <a asp-controller="Student" asp-action="Delete" class="btn btn-danger">Sil</a>
+                                            <a asp-controller="Student" asp-action="Update" asp-route-id="@student.Id" class="btn btn-warning">Düzenle</a>
+                                            <a asp-controller="Student" asp-action="Delete" asp-route-id="@student.Id" class="btn btn-danger">Sil</a>
                                         </td>
                                     </tr>
+                                    }
                                 }
-                            }
                         </tbody>
                     </table>
                 </div>
@@ -50,3 +58,19 @@
 </section>
 
 <partial name="~/Areas/Admin/Views/Student/Create.cshtml" model="new StudentCreateModel()"></partial>
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var message = '@TempData["AlertMessage"]'
+            if (message) {
+                Swal.fire({
+                    icon: 'Success',
+                    title: message,
+                    timer: 2000
+                })
+            }
+        })
+    </script>
+}

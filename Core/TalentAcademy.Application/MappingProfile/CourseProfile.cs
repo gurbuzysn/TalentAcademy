@@ -14,7 +14,6 @@ namespace TalentAcademy.Application.MappingProfile
             CreateMap<Course, GetCourseByIdQueryResponse>();
 
             CreateMap<CreateCourseCommandRequest, Course>();
-            CreateMap<Course, CreateCourseCommandResponse>();
         }
     }
 }

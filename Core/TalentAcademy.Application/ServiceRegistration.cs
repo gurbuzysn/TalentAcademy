@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using TalentAcademy.Application.Features;
 
 namespace TalentAcademy.Application
 {
@@ -10,6 +11,8 @@ namespace TalentAcademy.Application
         {
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            services.AddScoped(typeof(GeneralResponse));
         }
     }
 }

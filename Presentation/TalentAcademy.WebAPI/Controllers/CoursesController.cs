@@ -39,15 +39,15 @@ namespace TalentAcademy.WebAPI.Controllers
             return Ok(course);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Created(CreateCourseCommandRequest request)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest();
+        //[HttpPost]
+        //public async Task<IActionResult> Created(CreateCourseCommandRequest request)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return BadRequest();
 
-            var result = await _mediator.Send(request);
-            return Created("", result);
-        }
+        //    var result = await _mediator.Send(request);
+        //    return Created("", result);
+        //}
 
         [HttpPut]
         public async Task<IActionResult> Update(UpdateCourseCommandRequest request)

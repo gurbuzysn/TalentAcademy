@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using TalentAcademy.Domain.Entities.Identitiy;
 
 namespace TalentAcademy.Application.Features.Queries.Students.GetAllStudents
 {
@@ -16,11 +17,16 @@ namespace TalentAcademy.Application.Features.Queries.Students.GetAllStudents
         }
         public async Task<List<GetAllStudentsQueryResponse>> Handle(GetAllStudentsQueryRequest request, CancellationToken cancellationToken)
         {
-            // Gelen Student i veri tabanına kaydet
-            // Fotografın kendisini wwwroot/a
-
             var allStudents = await _userManager.GetUsersInRoleAsync("Student");
             var allStudentsDto = _mapper.Map<List<GetAllStudentsQueryResponse>>(allStudents);
+
+            foreach (var student in allStudentsDto)
+            {
+                if (student.ImageUri != null)
+                {
+                    student.ImageUri = $"https://localhost:7043{student.ImageUri}";
+                }
+            }
             return allStudentsDto;
         }
     }

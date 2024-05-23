@@ -1,10 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
+using TalentAcademy.Application.Dtos;
 using TalentAcademy.Domain.Enums;
 
 namespace TalentAcademy.Application.Features.Commands.Students.CreateStudent
 {
-    public class CreateStudentCommandRequest : IRequest
+    public class CreateStudentCommandRequest : IRequest<GeneralResponse>
     {
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;

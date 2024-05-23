@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Json;
 using TalentAcademy.MVC.Areas.Admin.Models.Student;
 using TalentAcademy.MVC.Enums;
+using TalentAcademy.MVC.Models;
 
 namespace TalentAcademy.MVC.Areas.Admin.Controllers
 {
@@ -62,14 +63,6 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
                 var client = _httpClientFactory.CreateClient();
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
-
-
-
-
-
-                //var content = new StringContent(JsonSerializer.Serialize(model), Encoding.UTF8, "application/json");
-
-
                 using (var content = new MultipartFormDataContent())
                 {
                     content.Add(new StringContent(model.FirstName), "FirstName");
@@ -88,8 +81,12 @@ namespace TalentAcademy.MVC.Areas.Admin.Controllers
                     {
                         var response = await client.PostAsync("https://localhost:7043/api/Students", content);
 
+                        var jsonData = await response.Content.ReadAsStringAsync();
+                        var result = JsonSerializer.Deserialize<GeneralResponseModel>(jsonData, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase});
+
                         if (response.IsSuccessStatusCode)
                         {
+                            TempData["Message"] = result.Message;
                             return RedirectToAction("List");
                         }
                         ModelState.AddModelError("", "Bir hata oluştu");
