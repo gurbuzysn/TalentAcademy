@@ -23,4 +23,8 @@
     <ProjectReference Include="..\..\Infrastructure\TalentAcademy.Persistence\TalentAcademy.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>
