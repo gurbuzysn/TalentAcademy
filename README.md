@@ -18,7 +18,5 @@ Admin rolunde ise genel olarak sistemsel raporlar görüntülenebilecektir.
 ### - Fluent Validation
 
 <br>
-<br>
-<br>
 
 ### Bu API projesini tüketen UI projesine [buraya tıklayarak](https://github.com/gurbuzysn/TalentAcademy-Client-React) ulaşabilirsiniz.
