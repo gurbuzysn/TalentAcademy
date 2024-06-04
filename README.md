@@ -16,4 +16,4 @@ Admin rolunde ise genel olarak sistemsel raporlar görüntülenebilecektir.
 ### AutoMapper
 ### Fluent Validation
 
-### Bu API projesini tüketen UI projesinde ise TailAdmin isimli open-source bir admin template kullandım. O projeye [Buraya Tıklayarak](https://github.com/gurbuzysn/TalentAcademy-Client-React) ulaşabilirsiniz.
+### Bu API projesini tüketen UI projesine [buraya tıklayarak](https://github.com/gurbuzysn/TalentAcademy-Client-React) ulaşabilirsiniz.
