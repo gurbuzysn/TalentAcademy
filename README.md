@@ -5,8 +5,8 @@ Student, Trainer tarafından oluşturulan ve Admin tarafından kendisine tanıml
 Admin rolunde ise genel olarak sistemsel raporlar görüntülenebilecektir.
 
 # Kullanılan Teknolojiler ve Tasarım Desenleri
-### .Net Core 8.0
-### Onion Architecture
+### - .Net Core 8.0
+### - Onion Architecture
 ### MsSql Database
 ### Entity Framework Core
 ### Generic Repository Pattern
