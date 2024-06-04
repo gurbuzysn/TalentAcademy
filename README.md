@@ -4,7 +4,7 @@ Trainer tarafında kurs ekleme, kursa videolu ders ekleme ve sınav ekleme gibi 
 Student, Trainer tarafından oluşturulan ve Admin tarafından kendisine tanımlanan kursları izleyip kursun sonundaki sınavı çözdükten sonra sertifika almaya hak kazanabilir.
 Admin rolunde ise genel olarak sistemsel raporlar görüntülenebilecektir.
 
-#Kullanılan Teknolojiler ve Tasarım Desenleri
+# Kullanılan Teknolojiler ve Tasarım Desenleri
 ### .Net Core 8.0
 ### Onion Architecture
 ### MsSql Database
@@ -16,4 +16,4 @@ Admin rolunde ise genel olarak sistemsel raporlar görüntülenebilecektir.
 ### AutoMapper
 ### Fluent Validation
 
-###Bu API projesini tüketen UI projesinde ise TailAdmin isimli open-source bir admin template kullandım. O projeye [Buraya Tıklayarak](https://github.com/gurbuzysn/TalentAcademy-Client-React) ulaşabilirsiniz.
+### Bu API projesini tüketen UI projesinde ise TailAdmin isimli open-source bir admin template kullandım. O projeye [Buraya Tıklayarak](https://github.com/gurbuzysn/TalentAcademy-Client-React) ulaşabilirsiniz.
