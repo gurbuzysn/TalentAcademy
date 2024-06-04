@@ -7,13 +7,14 @@ Admin rolunde ise genel olarak sistemsel raporlar görüntülenebilecektir.
 # Kullanılan Teknolojiler ve Tasarım Desenleri
 ### - .Net Core 8.0
 ### - Onion Architecture
-### MsSql Database
-### Entity Framework Core
-### Generic Repository Pattern
-### MediatR Kütüphanesi ile CQRS Pattern
-### Identity
-### Jwt
-### AutoMapper
-### Fluent Validation
+### - MsSql Database
+### - Entity Framework Core
+### - Generic Repository Pattern
+### - MediatR Kütüphanesi ile CQRS Pattern
+### - MediatR Kütüphanesi ile CQRS Pattern
+### - Identity
+### - Jwt
+### - AutoMapper
+### - Fluent Validation
 
 ### Bu API projesini tüketen UI projesine [buraya tıklayarak](https://github.com/gurbuzysn/TalentAcademy-Client-React) ulaşabilirsiniz.
