@@ -57,6 +57,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseResponseCaching();
+
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
@@ -68,6 +70,19 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+
+
+//app.UseHealthChecks("/api/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions()
+//{
+//    ResponseWriter = async (context, report) =>
+//    {
+//        await context.Response.WriteAsync("OK");
+//    }
+//});
+
+
+
 
 using (var scope = app.Services.CreateScope())
 {

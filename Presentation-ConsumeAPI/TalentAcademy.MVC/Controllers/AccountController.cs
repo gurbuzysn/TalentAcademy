@@ -38,7 +38,11 @@ namespace TalentAcademy.MVC.Controllers
                 {
                     var jsonData = await response.Content.ReadAsStringAsync();
                     var tokenModel = JsonSerializer.Deserialize<JwtTokenResponseModel>(jsonData, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+
+
                     var token = new JwtSecurityTokenHandler().ReadJwtToken(tokenModel.Token);
+
+
 
                     var claims = token.Claims.ToList();
                     claims.Add(new Claim("accessToken", tokenModel.Token));

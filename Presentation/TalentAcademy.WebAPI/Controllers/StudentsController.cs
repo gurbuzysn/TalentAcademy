@@ -17,6 +17,8 @@ namespace TalentAcademy.WebAPI.Controllers
             _mediator = mediator;
         }
 
+        
+        [ResponseCache(Duration = 10)]
         [HttpGet]
         public async Task<IActionResult> List()
         {

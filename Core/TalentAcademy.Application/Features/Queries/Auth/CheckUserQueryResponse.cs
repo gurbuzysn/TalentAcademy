@@ -1,4 +1,6 @@
-﻿namespace TalentAcademy.Application.Features.Queries.Auth
+﻿using TalentAcademy.Application.Dtos;
+
+namespace TalentAcademy.Application.Features.Queries.Auth
 {
     public class CheckUserQueryResponse
     {
@@ -6,7 +8,6 @@
         public string UserName { get; set; } = null!;
         public string FullName { get; set; } = null!;
         public string Role { get; set; } = null!;
-        public bool IsExist { get; set; }
-        public string? ErrorMessage { get; set; }
+        public TokenResponseDto Token { get; set; } = null!;
     }
 }
