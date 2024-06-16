@@ -1,16 +1,18 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
+using TalentAcademy.Application.Helpers;
+using TalentAcademy.Domain.Entities.Identitiy;
 
 namespace TalentAcademy.Application.Features.Queries.Auth
 {
     public class CheckUserQueryHandler : IRequestHandler<CheckUserQueryRequest, GeneralResponse>
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly SignInManager<AppUser> _signInManager;
         private readonly GeneralResponse _response;
 
-        public CheckUserQueryHandler(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager, GeneralResponse response)
+        public CheckUserQueryHandler(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<AppUser> signInManager, GeneralResponse response)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -51,8 +53,11 @@ namespace TalentAcademy.Application.Features.Queries.Auth
             {
                 queryResponse.Id = Guid.Parse(user!.Id);
                 queryResponse.UserName = user.UserName!;
-                queryResponse.FullName = "";
+                queryResponse.FullName = ConvertEmailToFullName.ConvertToFullName(user.UserName!);
                 queryResponse.Role = userRole!;
+                
+
+                 
 
                 _response.IsSuccess = true;
                 _response.Message = "Giriş Başarılı";

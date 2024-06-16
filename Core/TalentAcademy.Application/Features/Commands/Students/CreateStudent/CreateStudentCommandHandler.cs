@@ -9,11 +9,11 @@ namespace TalentAcademy.Application.Features.Commands.Students.CreateStudent
 {
     public class CreateStudentCommandHandler : IRequestHandler<CreateStudentCommandRequest, GeneralResponse>
      {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<AppUser> _userManager;
         private readonly IWebHostEnvironment _environment;
         private readonly GeneralResponse _response;
 
-        public CreateStudentCommandHandler(UserManager<IdentityUser> userManager, IWebHostEnvironment environment, GeneralResponse response)
+        public CreateStudentCommandHandler(UserManager<AppUser> userManager, IWebHostEnvironment environment, GeneralResponse response)
         {
             _userManager = userManager;
             _environment = environment;

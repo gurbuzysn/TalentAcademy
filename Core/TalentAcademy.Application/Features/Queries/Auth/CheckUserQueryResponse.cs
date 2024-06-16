@@ -8,6 +8,7 @@ namespace TalentAcademy.Application.Features.Queries.Auth
         public string UserName { get; set; } = null!;
         public string FullName { get; set; } = null!;
         public string Role { get; set; } = null!;
+        public string? ImageUri { get; set; } = null!;
         public TokenResponseDto Token { get; set; } = null!;
     }
 }

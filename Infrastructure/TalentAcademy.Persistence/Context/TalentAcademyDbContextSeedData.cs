@@ -8,7 +8,7 @@ namespace TalentAcademy.Persistence.Context
 {
     public static class TalentAcademyDbContextSeedData
     {
-        public static async Task SeedAsync(TalentAcademyDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task SeedAsync(TalentAcademyDbContext context, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             await context.Database.MigrateAsync();
 

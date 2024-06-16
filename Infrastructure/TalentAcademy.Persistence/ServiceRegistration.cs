@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TalentAcademy.Application.Repositories;
+using TalentAcademy.Domain.Entities.Identitiy;
 using TalentAcademy.Persistence.Context;
 using TalentAcademy.Persistence.Repositories;
 
@@ -14,7 +15,7 @@ namespace TalentAcademy.Persistence
         {
             services.AddDbContext<TalentAcademyDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            services.AddIdentity<AppUser, IdentityRole>(options =>
             {
                 options.Password.RequiredLength = 8;
                 options.Password.RequireNonAlphanumeric = true;
