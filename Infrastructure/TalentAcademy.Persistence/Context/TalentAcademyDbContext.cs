@@ -6,7 +6,7 @@ using TalentAcademy.Domain.Entities.Identitiy;
 
 namespace TalentAcademy.Persistence.Context
 {
-    public class TalentAcademyDbContext : IdentityDbContext<AppUser, AppRole, Guid>
+    public class TalentAcademyDbContext : IdentityDbContext
     {
         public TalentAcademyDbContext(DbContextOptions<TalentAcademyDbContext> options) : base(options) { }
 

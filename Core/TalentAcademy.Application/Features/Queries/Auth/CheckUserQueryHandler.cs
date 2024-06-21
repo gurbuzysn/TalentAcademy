@@ -7,12 +7,12 @@ namespace TalentAcademy.Application.Features.Queries.Auth
 {
     public class CheckUserQueryHandler : IRequestHandler<CheckUserQueryRequest, GeneralResponse>
     {
-        private readonly UserManager<AppUser> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly SignInManager<AppUser> _signInManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
         private readonly GeneralResponse _response;
 
-        public CheckUserQueryHandler(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<AppUser> signInManager, GeneralResponse response)
+        public CheckUserQueryHandler(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager, GeneralResponse response)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -52,6 +52,7 @@ namespace TalentAcademy.Application.Features.Queries.Auth
             else
             {
                 queryResponse.Id = Guid.Parse(user!.Id);
+                //queryResponse.Id = user.Id;
                 queryResponse.UserName = user.UserName!;
                 queryResponse.FullName = ConvertEmailToFullName.ConvertToFullName(user.UserName!);
                 queryResponse.Role = userRole!;

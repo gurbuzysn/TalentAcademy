@@ -8,7 +8,7 @@ namespace TalentAcademy.Persistence.Context
 {
     public static class TalentAcademyDbContextSeedData
     {
-        public static async Task SeedAsync(TalentAcademyDbContext context, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task SeedAsync(TalentAcademyDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             await context.Database.MigrateAsync();
 
@@ -18,6 +18,9 @@ namespace TalentAcademy.Persistence.Context
             await roleManager.CreateAsync(new IdentityRole() { Name = AuthorizationConstant.Roles.ADMIN });
             await roleManager.CreateAsync(new IdentityRole() { Name = AuthorizationConstant.Roles.TRAINER });
             await roleManager.CreateAsync(new IdentityRole() { Name = AuthorizationConstant.Roles.STUDENT });
+
+            var admin2 = new Admin();
+
 
             var admin = new Admin()
             {
