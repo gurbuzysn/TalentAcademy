@@ -24,7 +24,7 @@ namespace TalentAcademy.Application.Features.Queries.Students.GetAllStudents
             {
                 if (student.ImageUri != null)
                 {
-                    student.ImageUri = $"https://localhost:7043{student.ImageUri}";
+                    student.ImageUri = $"https://localhost:7043/images/{student.ImageUri}";
                 }
             }
             return allStudentsDto;

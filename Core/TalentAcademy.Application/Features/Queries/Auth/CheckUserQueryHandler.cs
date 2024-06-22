@@ -53,15 +53,10 @@ namespace TalentAcademy.Application.Features.Queries.Auth
             else
             {
                 queryResponse.Id = Guid.Parse(user!.Id);
-                //queryResponse.Id = user.Id;
                 queryResponse.UserName = user.UserName!;
                 queryResponse.FullName = ConvertEmailToFullName.ConvertToFullName(user.UserName!);
                 queryResponse.Role = userRole!;
-                //queryResponse.ImageUri = $"https://localhost:7043/images/{user.imageUri}"
-                //''
-                
-
-                 
+                queryResponse.ImageUri = $"https://localhost:7043/images/{user.ImageUri}";
 
                 _response.IsSuccess = true;
                 _response.Message = "Giriş Başarılı";
