@@ -6,10 +6,10 @@ namespace TalentAcademy.Application.Features.Commands.Students.DeleteStudent
 {
     public class DeleteStudentCommandHandler : IRequestHandler<DeleteStudentCommandRequest, GeneralResponse>
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<AppUser> _userManager;
         private readonly GeneralResponse _response;
 
-        public DeleteStudentCommandHandler(UserManager<IdentityUser> userManager, GeneralResponse response)
+        public DeleteStudentCommandHandler(UserManager<AppUser> userManager, GeneralResponse response)
         {
             _userManager = userManager;
             _response = response;

@@ -8,7 +8,7 @@ namespace TalentAcademy.Persistence.Context
 {
     public static class TalentAcademyDbContextSeedData
     {
-        public static async Task SeedAsync(TalentAcademyDbContext context, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public static async Task SeedAsync(TalentAcademyDbContext context, UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             await context.Database.MigrateAsync();
 
@@ -32,7 +32,8 @@ namespace TalentAcademy.Persistence.Context
                 NormalizedEmail = AuthorizationConstant.ADMIN_USERNAME.ToUpper(),
                 Gender = Gender.Erkek,
                 DateOfBirth = new DateTime(1993, 02, 25),
-                CreatedDate = DateTime.UtcNow,
+                CreatedDate = DateTime.Now,
+                UpdatedDate = DateTime.Now,
                 PhoneNumber = AuthorizationConstant.ADMIN_PHONE
             };
 
@@ -50,6 +51,7 @@ namespace TalentAcademy.Persistence.Context
                 Gender = Gender.Erkek,
                 DateOfBirth = new DateTime(1973, 04, 10),
                 CreatedDate = DateTime.UtcNow,
+                UpdatedDate = DateTime.UtcNow,
                 PhoneNumber = AuthorizationConstant.TRAINER_PHONE
             };
 
@@ -68,6 +70,7 @@ namespace TalentAcademy.Persistence.Context
                 Gender = Gender.Erkek,
                 DateOfBirth = new DateTime(2022, 08, 22),
                 CreatedDate = DateTime.UtcNow,
+                UpdatedDate = DateTime.UtcNow,
                 PhoneNumber = AuthorizationConstant.STUDENT_PHONE
             };
 

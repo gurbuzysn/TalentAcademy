@@ -15,7 +15,7 @@ namespace TalentAcademy.Persistence
         {
             services.AddDbContext<TalentAcademyDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            services.AddIdentity<AppUser, IdentityRole>(options =>
             {
                 options.Password.RequiredLength = 8;
                 options.Password.RequireNonAlphanumeric = true;
