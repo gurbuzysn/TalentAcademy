@@ -26,8 +26,6 @@ namespace TalentAcademy.WebAPI.Controllers
             return Ok(result);
         }
 
-     
-
         [HttpPost]
         public async Task<IActionResult> Create(CreateStudentCommandRequest request)
         {
