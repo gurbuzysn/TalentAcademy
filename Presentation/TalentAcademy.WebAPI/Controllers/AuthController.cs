@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TalentAcademy.Application.Features.Queries.Auth;

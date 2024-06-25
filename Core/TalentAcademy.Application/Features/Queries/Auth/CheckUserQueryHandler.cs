@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using TalentAcademy.Application.Helpers;
 using TalentAcademy.Domain.Entities.Identitiy;
-using static System.Net.WebRequestMethods;
 
 namespace TalentAcademy.Application.Features.Queries.Auth
 {

@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TalentAcademy.Application.Dtos.Student;
+﻿using TalentAcademy.Application.Dtos.Student;
 using TalentAcademy.Application.Dtos.Topic;
-using TalentAcademy.Domain.Entities;
 
 namespace TalentAcademy.Application.Dtos.Course
 {

@@ -1,5 +1,5 @@
-﻿using TalentAcademy.Domain.Entities.Identitiy;
-using TalentAcademy.Domain.Entities;
+﻿using TalentAcademy.Application.Dtos.Student;
+using TalentAcademy.Application.Dtos.Topic;
 
 namespace TalentAcademy.Application.Features.Queries.Courses.GetAllCourses
 {
@@ -9,7 +9,7 @@ namespace TalentAcademy.Application.Features.Queries.Courses.GetAllCourses
         public string? Description { get; set; } = null!;
         public string? ImageUri { get; set; }
 
-        public List<Student> Students { get; set; } = new();
-        public List<Topic> Topics { get; set; } = new();
+        public List<StudentDto> Students { get; set; } = new();
+        public List<TopicDto> Topics { get; set; } = new();
     }
 }

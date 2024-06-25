@@ -1,9 +1,4 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TalentAcademy.Application.Features.Commands.Courses;
 using TalentAcademy.Application.Features.Queries.Courses.GetAllCourses;
 using TalentAcademy.Domain.Entities;

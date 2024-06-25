@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
-using TalentAcademy.Application.Dtos;
 using TalentAcademy.Domain.Enums;
 
 namespace TalentAcademy.Application.Features.Commands.Students.CreateStudent

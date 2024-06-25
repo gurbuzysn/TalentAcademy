@@ -1,14 +1,13 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using TalentAcademy.Application.Dtos;
 using TalentAcademy.Application.Helpers;
 using TalentAcademy.Domain.Entities.Identitiy;
 
 namespace TalentAcademy.Application.Features.Commands.Students.CreateStudent
 {
     public class CreateStudentCommandHandler : IRequestHandler<CreateStudentCommandRequest, GeneralResponse>
-     {
+    {
         private readonly UserManager<AppUser> _userManager;
         private readonly IWebHostEnvironment _environment;
         private readonly GeneralResponse _response;
@@ -65,6 +64,6 @@ namespace TalentAcademy.Application.Features.Commands.Students.CreateStudent
             return _response;
         }
 
-       
+
     }
 }

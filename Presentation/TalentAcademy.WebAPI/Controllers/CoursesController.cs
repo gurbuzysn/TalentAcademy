@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TalentAcademy.Application.Features.Commands.Courses;
 using TalentAcademy.Application.Features.Queries.Courses.GetAllCourses;

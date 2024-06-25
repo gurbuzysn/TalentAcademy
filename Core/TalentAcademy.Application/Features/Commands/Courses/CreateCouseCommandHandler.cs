@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TalentAcademy.Application.Repositories;
 using TalentAcademy.Domain.Entities;
 
@@ -27,7 +22,7 @@ namespace TalentAcademy.Application.Features.Commands.Courses
         {
             var newCourse = _mapper.Map<Course>(request);
 
-            if(request.Image != null)
+            if (request.Image != null)
             {
                 var imageFileName = $"{Guid.NewGuid()}{Path.GetExtension(request.Image.FileName)}";
                 var imagePath = Path.Combine(_environment.WebRootPath, "images", imageFileName);
@@ -43,13 +38,13 @@ namespace TalentAcademy.Application.Features.Commands.Courses
 
             try
             {
-               await _writeRepository.CreateAsync(newCourse);
+                await _writeRepository.CreateAsync(newCourse);
                 return new CreateCourseCommandResponse();
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.ToString());
-                
+
             }
 
         }
