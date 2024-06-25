@@ -46,7 +46,6 @@ namespace TalentAcademy.Application.Features.Commands.Students.CreateStudent
                 {
                     await request.Image.CopyToAsync(stream);
                 }
-                //newStudent.ImageUri = $"/images/{imageFileName}";
                 newStudent.ImageUri = $"{imageFileName}";
 
             }

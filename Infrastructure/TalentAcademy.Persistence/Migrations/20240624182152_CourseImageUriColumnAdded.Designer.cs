@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TalentAcademy.Persistence.Context;
 
@@ -11,9 +12,11 @@ using TalentAcademy.Persistence.Context;
 namespace TalentAcademy.Persistence.Migrations
 {
     [DbContext(typeof(TalentAcademyDbContext))]
-    partial class TalentAcademyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240624182152_CourseImageUriColumnAdded")]
+    partial class CourseImageUriColumnAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
