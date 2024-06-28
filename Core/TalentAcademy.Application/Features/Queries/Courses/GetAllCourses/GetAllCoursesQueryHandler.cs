@@ -21,6 +21,11 @@ namespace TalentAcademy.Application.Features.Queries.Courses.GetAllCourses
 
             var response = _mapper.Map<List<GetAllCoursesQueryResponse>>(allCourse);
 
+            foreach (var course in response)
+            {
+                course.ImageUri = $"https://localhost:7043/images/{course.ImageUri}";
+            }
+
             return response;
         }
     }

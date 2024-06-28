@@ -30,11 +30,9 @@ namespace TalentAcademy.Application.Features.Commands.Courses
                 {
                     await request.Image.CopyToAsync(stream);
                 }
-                newCourse.ImageUri = $"{imageFileName}";
+                newCourse.ImageUri = imageFileName;
             }
-
             newCourse.CreatedDate = DateTime.UtcNow;
-
 
             try
             {
@@ -46,7 +44,6 @@ namespace TalentAcademy.Application.Features.Commands.Courses
                 throw new Exception(ex.ToString());
 
             }
-
         }
     }
 }

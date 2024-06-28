@@ -1,9 +1,9 @@
 ﻿using TalentAcademy.Application.Dtos.Student;
 using TalentAcademy.Application.Dtos.Topic;
 
-namespace TalentAcademy.Application.Features.Queries.Courses.GetAllCourses
+namespace TalentAcademy.Application.Features.Queries.Courses.GetCourseById
 {
-    public class GetAllCoursesQueryResponse
+    public class GetCourseByIdQueryResponse
     {
         public Guid Id { get; set; }
         public string Name { get; set; } = null!;
