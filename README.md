@@ -11,7 +11,6 @@ Admin rolunde ise genel olarak sistemsel raporlar görüntülenebilecektir.
 ### - Entity Framework Core
 ### - Generic Repository Pattern
 ### - MediatR Kütüphanesi ile CQRS Pattern
-### - MediatR Kütüphanesi ile CQRS Pattern
 ### - Identity
 ### - Jwt
 ### - AutoMapper
