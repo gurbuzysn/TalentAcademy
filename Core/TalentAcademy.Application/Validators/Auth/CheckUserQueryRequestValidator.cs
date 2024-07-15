@@ -10,7 +10,7 @@ namespace TalentAcademy.Application.Validators.Auth
             RuleFor(x => x.UserName)
                 .NotEmpty()
                 .NotNull()
-                    .WithMessage("Kullanıcı adı boş olamazzzzzzzzzzzzzz")
+                    .WithMessage("Kullanıcı adı boş olamaz")
                 .EmailAddress()
                     .WithMessage("Lütfen geçerli bir email adresi giriniz");
 
