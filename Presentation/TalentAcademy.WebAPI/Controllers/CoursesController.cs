@@ -57,8 +57,8 @@ namespace TalentAcademy.WebAPI.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<IActionResult> AddTopicToCourse( )
+        [HttpPost("ActionName")]
+        public async Task<IActionResult> AddTopicToCourse()
         {
             return Created();
         }
